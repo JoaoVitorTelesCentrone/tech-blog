@@ -40,7 +40,7 @@ tags: ["tag1", "tag2", "tag3"]
 (conteúdo)
 
 ## Seção 1: (subtítulo)
-(conteúdo com citações [^1] quando pertinente)
+(conteúdo com links embutidos quando pertinente, ex: [Fonte](URL))
 
 ## Seção 2: (subtítulo)
 (conteúdo)
@@ -51,13 +51,14 @@ tags: ["tag1", "tag2", "tag3"]
 ## Conclusão
 (conteúdo)
 
-### Fontes
-[^1]: [Título da Fonte](URL)
-[^2]: [Título da Fonte](URL)
+### Fontes Consultadas
+- [Título da Fonte 1](URL)
+- [Título da Fonte 2](URL)
 
 3. Use linguagem acessível mas técnica na medida certa.
 4. Mínimo de 800 palavras.
-5. Inclua pelo menos 3 citações de fontes diferentes no corpo do texto.
+5. Inclua pelo menos 3 links embutidos no corpo do texto para as fontes originais.
+6. Não use a sintaxe de footnotes [^1]. Coloque os links diretamente no texto e crie uma lista simples no final.
 6. Não invente dados. Baseie-se no [CONTEXTO] fornecido.
 `;
 
