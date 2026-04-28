@@ -24,7 +24,8 @@ Regras obrigatórias:
    - Desenvolvimento dividido em 3-4 seções com subtítulos (<h2>).
    - Conclusão com resumo ou perspectiva futura.
    - Seção "Fontes consultadas" com links clicáveis das fontes do [CONTEXTO].
-2. Formate TUDO em Markdown, seguindo RIGOROSAMENTE esta estrutura com frontmatter no topo:
+2. Formate TUDO em Markdown, seguindo RIGOROSAMENTE esta estrutura com frontmatter no topo. 
+IMPORTANTE: NÃO inclua crases (```markdown) na sua resposta. Comece o texto DIRETAMENTE com os 3 traços (---):
 
 ---
 title: "TÍTULO AQUI"
@@ -68,7 +69,20 @@ tags: ["tag1", "tag2", "tag3"]
         contents: promptTemplate,
     });
     
-    return response.text || '';
+    let text = response.text || '';
+    
+    // Filtro de segurança rigoroso: remove crases de blocos markdown caso a IA decida enviá-los mesmo com o aviso
+    text = text.replace(/^```markdown\s*/i, '');
+    text = text.replace(/^```\s*/, '');
+    text = text.replace(/```\s*$/, '');
+    
+    // Garante que o texto comece rigorosamente com --- para o gray-matter funcionar
+    text = text.trim();
+    if (!text.startsWith('---')) {
+        text = '---\n' + text;
+    }
+
+    return text;
   } catch (error) {
     console.error('Erro ao gerar artigo com Gemini:', error);
     throw error;
