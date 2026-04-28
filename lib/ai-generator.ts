@@ -25,7 +25,7 @@ Regras obrigatórias:
    - Conclusão com resumo ou perspectiva futura.
    - Seção "Fontes consultadas" com links clicáveis das fontes do [CONTEXTO].
 2. Formate TUDO em Markdown, seguindo RIGOROSAMENTE esta estrutura com frontmatter no topo. 
-IMPORTANTE: NÃO inclua crases (```markdown) na sua resposta. Comece o texto DIRETAMENTE com os 3 traços (---):
+IMPORTANTE: NÃO inclua blocos de formatação markdown (como crase tripla) na sua resposta. Comece o texto DIRETAMENTE com os 3 traços (---):
 
 ---
 title: "TÍTULO AQUI"

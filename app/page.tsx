@@ -5,15 +5,34 @@ import Link from 'next/link'
 import { getSortedArticlesData } from '@/lib/markdown'
 
 export default function HomePage() {
-  const articles = getSortedArticlesData()
-  const latestArticle = articles[0]
-  const otherArticles = articles.slice(1, 3)
+  const allArticles = getSortedArticlesData()
+
+  // Formatador de data (ex: 2026-04-28 -> 28 de Abril de 2026)
+  const formatDate = (dateStr: string) => {
+    const [y, m, d] = dateStr.split('-');
+    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    return `${parseInt(d, 10)} de ${months[parseInt(m, 10) - 1]} de ${y}`;
+  }
+
+  // Agrupa artigos por data
+  const grouped = allArticles.reduce((acc, curr) => {
+    if (!acc[curr.date]) acc[curr.date] = [];
+    acc[curr.date].push(curr);
+    return acc;
+  }, {} as Record<string, typeof allArticles>);
+
+  const sortedDates = Object.keys(grouped).sort((a, b) => (a < b ? 1 : -1));
+  const latestDate = sortedDates[0];
+  const todayArticles = latestDate ? grouped[latestDate] : [];
+  const mainArticle = todayArticles[0];
+  const secondaryTodayArticles = todayArticles.slice(1);
+  const previousDates = sortedDates.slice(1, 4); // pega os ultimos 3 dias para a home
 
   return (
     <>
       <Header />
       <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-12">
-        {articles.length === 0 ? (
+        {allArticles.length === 0 ? (
           <div className="py-20 text-center">
             <h1 className="font-newsreader text-4xl text-primary mb-4">Ainda não há artigos</h1>
             <p className="font-work-sans text-on-surface-variant">Aguarde o robô gerar a primeira publicação.</p>
@@ -25,17 +44,17 @@ export default function HomePage() {
               {/* Left metadata */}
               <div className="col-span-12 md:col-span-2 mb-8 md:mb-0">
                 <div className="md:sticky md:top-28">
-                  <p className="font-label-caps text-label-caps text-on-surface uppercase mb-2">Edição de hoje</p>
-                  <p className="font-newsreader text-primary text-2xl font-medium">Nº 0{articles.length}</p>
-                  <p className="font-work-sans text-body-md text-on-surface-variant mt-4">{latestArticle.date}</p>
+                  <p className="font-label-caps text-label-caps text-on-surface uppercase mb-2">Edição de {formatDate(latestDate)}</p>
+                  <p className="font-newsreader text-primary text-2xl font-medium">Hoje</p>
+                  <p className="font-work-sans text-body-md text-on-surface-variant mt-4">{latestDate}</p>
                 </div>
               </div>
 
               {/* Main headline */}
               <div className="col-span-12 md:col-span-7">
-                <Link href={`/post/${latestArticle.slug}`} className="hover:opacity-80 transition-opacity">
+                <Link href={`/post/${mainArticle.slug}`} className="hover:opacity-80 transition-opacity">
                   <h1 className="font-newsreader font-semibold text-primary mb-8 leading-[0.95] text-4xl sm:text-5xl lg:text-display-xl">
-                    {latestArticle.title}
+                    {mainArticle.title}
                   </h1>
                 </Link>
                 <div className="border-b border-primary mb-8" style={{ borderBottomWidth: '0.5pt' }} />
@@ -47,7 +66,7 @@ export default function HomePage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-wrap gap-2 mt-2">
-                      {latestArticle.tags?.map(tag => (
+                      {mainArticle.tags?.map(tag => (
                          <span key={tag} className="font-label-caps text-[10px] uppercase bg-surface-container-low px-2 py-1 rounded">
                            {tag}
                          </span>
@@ -59,10 +78,10 @@ export default function HomePage() {
 
               {/* Cover image */}
               <div className="col-span-12 md:col-span-3 mt-8 md:mt-0">
-                <Link href={`/post/${latestArticle.slug}`}>
+                <Link href={`/post/${mainArticle.slug}`}>
                   <div className="aspect-[3/4] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 bg-surface-container-low flex items-center justify-center relative">
-                    {latestArticle.image ? (
-                      <Image src={latestArticle.image} alt={latestArticle.title} fill className="object-cover" />
+                    {mainArticle.image ? (
+                      <Image src={mainArticle.image} alt={mainArticle.title} fill className="object-cover" />
                     ) : (
                       <span className="material-symbols-outlined text-[64px] text-primary/20">memory</span>
                     )}
@@ -70,6 +89,21 @@ export default function HomePage() {
                 </Link>
               </div>
             </header>
+
+            {secondaryTodayArticles.length > 0 && (
+              <div className="grid grid-cols-12 gap-grid-gutter mb-section-gap">
+                <div className="col-span-12 md:col-start-3 md:col-span-10">
+                  <h3 className="font-label-caps text-label-caps uppercase text-on-surface-variant mb-4">Também na edição de hoje:</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {secondaryTodayArticles.map(article => (
+                      <Link key={article.slug} href={`/post/${article.slug}`} className="block border-t border-outline-variant pt-4 hover:bg-surface-container-low transition-colors duration-200">
+                        <h4 className="font-newsreader text-xl font-medium text-primary mb-2">{article.title}</h4>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Ad placeholder */}
             <div
@@ -82,68 +116,64 @@ export default function HomePage() {
             </div>
 
             {/* Editorial Grid */}
-            {otherArticles.length > 0 && (
+            {previousDates.length > 0 && (
               <section className="grid grid-cols-12 gap-grid-gutter mb-section-gap">
-                {/* Featured Summary Card */}
                 <div className="col-span-12 md:col-span-8 border-2 border-primary p-8 md:p-12">
                   <div className="mb-8 md:mb-12">
                     <span className="font-label-caps text-label-caps text-accent-coral uppercase tag-underline">
                       Publicações Anteriores
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-                    <div>
-                      <Link href={`/post/${otherArticles[0].slug}`} className="hover:underline">
-                        <h2 className="font-newsreader font-medium text-primary mb-6 text-2xl md:text-headline-lg leading-tight">
-                          {otherArticles[0].title}
-                        </h2>
-                      </Link>
-                      <p className="font-work-sans text-body-md text-on-surface-variant mb-8">
-                        Publicado em {otherArticles[0].date}
-                      </p>
-                      <div className="flex items-center gap-3">
-                        <Link className="font-label-caps text-[10px] uppercase text-accent-coral ml-auto hover:underline" href={`/post/${otherArticles[0].slug}`}>
-                          Ler Artigo
-                        </Link>
+                  
+                  <div className="space-y-12">
+                    {previousDates.map(date => (
+                      <div key={date}>
+                        <h3 className="font-label-caps text-label-caps text-on-surface mb-6 border-b border-outline-variant pb-2">
+                          Edição de {formatDate(date)}
+                        </h3>
+                        <div className="flex flex-col gap-6">
+                          {grouped[date].map(article => (
+                            <Link key={article.slug} href={`/post/${article.slug}`} className="hover:underline">
+                              <h2 className="font-newsreader font-medium text-primary text-xl leading-tight">
+                                {article.title}
+                              </h2>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div className="aspect-square w-full bg-surface-container-low flex items-center justify-center relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                      {otherArticles[0].image ? (
-                        <Image src={otherArticles[0].image} alt={otherArticles[0].title} fill className="object-cover" />
-                      ) : (
-                        <span className="material-symbols-outlined text-[48px] text-primary/20">article</span>
-                      )}
-                    </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-12 pt-8 border-t border-outline-variant">
+                    <Link href="/archive" className="font-label-caps text-[11px] uppercase tracking-[0.15em] text-on-surface hover:text-accent-coral transition-colors flex items-center gap-2">
+                      Ver todo o arquivo <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                    </Link>
                   </div>
                 </div>
 
-                {/* Right column cards */}
+                {/* Right column cards (Advertising or Highlights) */}
                 <div className="col-span-12 md:col-span-4 flex flex-col gap-grid-gutter">
-                  {otherArticles[1] && (
-                    <div className="border border-primary p-8 h-full flex flex-col justify-between" style={{ borderWidth: '0.5pt' }}>
-                      <div>
-                        <div className="mb-6">
-                          <span className="font-label-caps text-label-caps text-on-surface uppercase tag-underline">
-                            Arquivo
-                          </span>
-                        </div>
-                        <Link href={`/post/${otherArticles[1].slug}`} className="hover:underline">
-                          <h3 className="font-newsreader font-medium text-primary mb-4 text-headline-md">
-                            {otherArticles[1].title}
-                          </h3>
-                        </Link>
-                        <p className="font-work-sans text-body-md text-on-surface-variant mb-6">
-                          {otherArticles[1].date}
-                        </p>
+                  <div className="border border-primary p-8 h-full flex flex-col justify-between" style={{ borderWidth: '0.5pt' }}>
+                    <div>
+                      <div className="mb-6">
+                        <span className="font-label-caps text-label-caps text-on-surface uppercase tag-underline">
+                          Sobre o Projeto
+                        </span>
                       </div>
-                      <div className="flex items-center gap-3 mt-auto">
-                        <div className="w-5 h-5 bg-stone-200 flex items-center justify-center flex-shrink-0">
-                          <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
-                        </div>
-                        <span className="font-label-caps text-[9px] uppercase">TechPulse AI</span>
-                      </div>
+                      <h3 className="font-newsreader font-medium text-primary mb-4 text-headline-md">
+                        Jornalismo 100% Automatizado
+                      </h3>
+                      <p className="font-work-sans text-body-md text-on-surface-variant mb-6">
+                        Nossas edições diárias são pesquisadas, escritas e ilustradas por Inteligência Artificial autônoma.
+                      </p>
                     </div>
-                  )}
+                    <div className="flex items-center gap-3 mt-auto">
+                      <div className="w-5 h-5 bg-stone-200 flex items-center justify-center flex-shrink-0">
+                        <span className="material-symbols-outlined text-[12px] text-primary">auto_awesome</span>
+                      </div>
+                      <span className="font-label-caps text-[9px] uppercase">TechPulse AI</span>
+                    </div>
+                  </div>
                 </div>
               </section>
             )}

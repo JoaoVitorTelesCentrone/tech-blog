@@ -1,33 +1,34 @@
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-const archiveData = [
-  {
-    month: 'ABRIL 2026',
-    editions: [
-      { id: '047', number: 'Nº 047', date: '28.04', title: 'O Paradoxo da Inteligência Sintética' },
-      { id: '046', number: 'Nº 046', date: '21.04', title: 'Arquiteturas de Silício e o Futuro do Processamento' },
-      { id: '045', number: 'Nº 045', date: '14.04', title: 'A Ética na Vigilância Algorítmica' },
-    ],
-  },
-  {
-    month: 'MARÇO 2026',
-    editions: [
-      { id: '044', number: 'Nº 044', date: '31.03', title: 'Descentralização: Promessas e Ruínas' },
-      { id: '043', number: 'Nº 043', date: '24.03', title: 'Interfaces Neuro-Digitais: A Próxima Fronteira' },
-      { id: '042', number: 'Nº 042', date: '17.03', title: 'A Morte do Pixel e o Nascimento do Volume' },
-    ],
-  },
-  {
-    month: 'FEVEREIRO 2026',
-    editions: [
-      { id: '041', number: 'Nº 041', date: '28.02', title: 'Protocolos de Confiança em Tempos de Deepfake' },
-    ],
-  },
-]
+import { getSortedArticlesData } from '@/lib/markdown'
 
 export default function ArchivePage() {
+  const allArticles = getSortedArticlesData()
+
+  // Formatador de mes (ex: 2026-04-28 -> ABRIL 2026)
+  const getMonthYear = (dateStr: string) => {
+    const [y, m] = dateStr.split('-');
+    const months = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
+    return `${months[parseInt(m, 10) - 1]} ${y}`;
+  }
+
+  // Helper para mostrar formato dia/mes (ex: 28.04)
+  const getDayMonth = (dateStr: string) => {
+    const [, m, d] = dateStr.split('-');
+    return `${d}.${m}`;
+  }
+
+  // Agrupa artigos primeiro por mês, depois por data
+  const archiveGroups = allArticles.reduce((acc, curr) => {
+    const monthYear = getMonthYear(curr.date);
+    if (!acc[monthYear]) acc[monthYear] = {};
+    if (!acc[monthYear][curr.date]) acc[monthYear][curr.date] = [];
+    
+    acc[monthYear][curr.date].push(curr);
+    return acc;
+  }, {} as Record<string, Record<string, typeof allArticles>>);
+
   return (
     <>
       <Header />
@@ -50,29 +51,32 @@ export default function ArchivePage() {
         {/* Archive list */}
         <section className="grid grid-cols-12 gap-grid-gutter">
           <div className="col-span-12 md:col-start-3 md:col-span-8 space-y-20">
-            {archiveData.map(({ month, editions }) => (
+            {Object.entries(archiveGroups).map(([month, datesMap]) => (
               <div key={month}>
                 <h2 className="font-label-caps text-label-caps text-on-tertiary-container mb-8 flex items-center gap-4">
                   {month}
                   <span className="flex-grow bg-outline-variant" style={{ height: '0.5pt' }} />
                 </h2>
-                <div className="divide-y divide-outline-variant">
-                  {editions.map(({ id, number, date, title }) => (
-                    <Link
-                      key={id}
-                      href={`/edition/${id}`}
-                      className="grid grid-cols-12 py-6 hover:bg-surface-container-low transition-colors duration-200 cursor-pointer group block"
-                    >
-                      <div className="col-span-3 sm:col-span-2 font-label-caps text-label-caps text-on-surface-variant flex items-center">
-                        {number}
+                
+                <div className="space-y-12">
+                  {Object.entries(datesMap).map(([date, articlesList]) => (
+                    <div key={date} className="divide-y divide-outline-variant border-t border-outline-variant pt-2">
+                      <div className="font-label-caps text-label-caps text-primary mb-4 mt-2">
+                        Edição de {getDayMonth(date)}
                       </div>
-                      <div className="col-span-3 sm:col-span-2 font-label-caps text-label-caps text-on-surface-variant flex items-center">
-                        {date}
-                      </div>
-                      <div className="col-span-6 sm:col-span-8 font-newsreader font-medium text-[20px] md:text-[24px] leading-tight group-hover:translate-x-2 transition-transform duration-300">
-                        {title}
-                      </div>
-                    </Link>
+                      
+                      {articlesList.map((article) => (
+                        <Link
+                          key={article.slug}
+                          href={`/post/${article.slug}`}
+                          className="grid grid-cols-12 py-4 hover:bg-surface-container-low transition-colors duration-200 cursor-pointer group block"
+                        >
+                          <div className="col-span-12 sm:col-span-10 sm:col-start-3 font-newsreader font-medium text-[20px] md:text-[24px] leading-tight group-hover:translate-x-2 transition-transform duration-300">
+                            {article.title}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
