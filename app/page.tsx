@@ -102,10 +102,6 @@ export default function HomePage() {
                         Publicado em {otherArticles[0].date}
                       </p>
                       <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 bg-primary flex items-center justify-center flex-shrink-0">
-                          <span className="material-symbols-outlined text-[14px] text-white">verified</span>
-                        </div>
-                        <span className="font-label-caps text-[10px] uppercase">Fonte: AI Backend</span>
                         <Link className="font-label-caps text-[10px] uppercase text-accent-coral ml-auto hover:underline" href={`/post/${otherArticles[0].slug}`}>
                           Ler Artigo
                         </Link>
