@@ -10,6 +10,7 @@ export type ArticleFrontmatter = {
   tags?: string[];
   slug: string;
   image?: string;
+  createdAt?: number;
 };
 
 export type Article = ArticleFrontmatter & {
@@ -43,15 +44,19 @@ export function getSortedArticlesData(): ArticleFrontmatter[] {
         date: matterResult.data.date || new Date().toISOString().split('T')[0],
         tags: matterResult.data.tags || [],
         image: matterResult.data.image,
+        createdAt: fs.statSync(fullPath).mtimeMs,
       };
     });
 
   return allArticlesData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
+    // Tenta ordenar pela data do frontmatter
+    if (a.date !== b.date) {
+      return a.date < b.date ? 1 : -1;
     }
+    // Se a data for igual (mesmo dia), desempata pela hora de criação do arquivo
+    const timeA = a.createdAt || 0;
+    const timeB = b.createdAt || 0;
+    return timeB - timeA;
   });
 }
 
