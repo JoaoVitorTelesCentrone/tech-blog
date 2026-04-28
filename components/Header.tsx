@@ -5,25 +5,32 @@ import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
-const navLinks = [
-  { href: '/archive', label: 'Arquivo' },
-  { href: '/subscribe', label: 'Assinar' },
-  { href: '/about', label: 'Sobre' },
-]
-
 export default function Header() {
-  const pathname = usePathname()
+  const pathname = usePathname() || '/pt'
+  const lang = pathname.split('/')[1] === 'en' ? 'en' : 'pt'
   const { theme, setTheme } = useTheme()
-  const [lang, setLang] = useState<'PT' | 'EN'>('PT')
   const [mobileOpen, setMobileOpen] = useState(false)
-  const isHome = pathname === '/'
+  const isHome = pathname === '/pt' || pathname === '/en'
+
+  const t = {
+    archive: lang === 'en' ? 'Archive' : 'Arquivo',
+    subscribe: lang === 'en' ? 'Subscribe' : 'Assinar',
+    about: lang === 'en' ? 'About' : 'Sobre',
+    latestNews: lang === 'en' ? 'Latest News: Generative AI reaches new milestones in real-time editorial translation.' : 'Últimas Notícias: A Inteligência Artificial Generativa alcança novos marcos na tradução editorial em tempo real.',
+  }
+
+  const navLinks = [
+    { href: `/${lang}/archive`, label: t.archive },
+    { href: `/${lang}/subscribe`, label: t.subscribe },
+    { href: `/${lang}/about`, label: t.about },
+  ]
 
   return (
     <>
       {isHome && (
         <div className="w-full bg-accent-coral text-white py-2 px-4 text-center sticky top-0 z-[60]">
           <p className="font-label-caps text-[10px] uppercase tracking-[0.2em]">
-            Últimas Notícias: A Inteligência Artificial Generativa alcança novos marcos na tradução editorial em tempo real.
+            {t.latestNews}
           </p>
         </div>
       )}
@@ -35,7 +42,7 @@ export default function Header() {
         <div className="flex justify-between items-center px-8 py-4 w-full max-w-editorial mx-auto">
           <div className="flex items-center gap-8">
             <Link
-              href="/"
+              href={`/${lang}`}
               className="text-2xl font-bold uppercase tracking-tighter text-[#1A1A1A] dark:text-stone-100"
             >
               TechPulse
@@ -62,27 +69,27 @@ export default function Header() {
 
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 font-label-caps text-[11px] cursor-pointer select-none">
-              <span
-                onClick={() => setLang('PT')}
+              <Link
+                href={pathname.replace(/^\/(en|pt)/, '/pt')}
                 className={
-                  lang === 'PT'
+                  lang === 'pt'
                     ? 'text-accent-coral'
                     : 'text-on-surface-variant hover:text-accent-coral transition-colors'
                 }
               >
                 PT
-              </span>
+              </Link>
               <span className="text-outline">|</span>
-              <span
-                onClick={() => setLang('EN')}
+              <Link
+                href={pathname.replace(/^\/(en|pt)/, '/en')}
                 className={
-                  lang === 'EN'
+                  lang === 'en'
                     ? 'text-accent-coral'
                     : 'text-on-surface-variant hover:text-accent-coral transition-colors'
                 }
               >
                 EN
-              </span>
+              </Link>
             </div>
 
             <button

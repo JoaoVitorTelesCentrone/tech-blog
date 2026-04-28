@@ -14,17 +14,17 @@ async function main() {
       process.exit(0);
     }
 
-    console.log('🤖 [GITHUB ACTIONS] Gerando artigo com a IA do Gemini...');
+    console.log('🤖 [GITHUB ACTIONS] Gerando artigo BILINGUE com a IA do Gemini...');
     const topic = "Os principais destaques e inovações em Inteligência Artificial e Tecnologia hoje";
-    let markdownContent = await generateArticleWithGemini(topic, context);
+    const articles = await generateArticleWithGemini(topic, context);
 
-    // Limpar o markdown
-    markdownContent = markdownContent.replace(/^```markdown\n/m, '');
-    markdownContent = markdownContent.replace(/\n```$/m, '');
+    if (!articles.pt || !articles.en) {
+      throw new Error("A IA não retornou o JSON esperado com os dois idiomas.");
+    }
 
-    // Extrair o título
-    const matterResult = matter(markdownContent);
-    const articleTitle = matterResult.data.title || "Inovação em Tecnologia e IA";
+    // Extrair o título da versão inglês para gerar a imagem
+    const matterResultEn = matter(articles.en);
+    const articleTitleEn = matterResultEn.data.title || "Technology Innovation";
 
     console.log('🤖 [GITHUB ACTIONS] Gerando imagem de identidade visual com Pollinations.ai...');
     
@@ -32,8 +32,10 @@ async function main() {
     const uniqueId = Math.random().toString(36).substring(2, 7);
     const fileName = `${dateStr}-${uniqueId}`;
 
+    let imageUrlFinal = `/images/tech_${Math.floor(Math.random() * 3) + 1}.png`;
+
     try {
-      const imagePrompt = encodeURIComponent(`Abstract cinematic 3d render representing ${articleTitle}. Technology, mathematics, coding, physics, subtle glowing lines, dark modern background, highly detailed. No text.`);
+      const imagePrompt = encodeURIComponent(`Abstract cinematic 3d render representing ${articleTitleEn}. Technology, mathematics, coding, physics, subtle glowing lines, dark modern background, highly detailed. No text.`);
       const imageUrl = `https://image.pollinations.ai/prompt/${imagePrompt}?width=800&height=450&nologo=true`;
       
       const imageResponse = await fetch(imageUrl);
@@ -45,26 +47,30 @@ async function main() {
         }
         const imagePath = path.join(imagesDirPath, `${fileName}.jpg`);
         fs.writeFileSync(imagePath, Buffer.from(buffer));
-        matterResult.data.image = `/images/${fileName}.jpg`;
-      } else {
-        const randomImageNumber = Math.floor(Math.random() * 3) + 1;
-        matterResult.data.image = `/images/tech_${randomImageNumber}.png`;
+        imageUrlFinal = `/images/${fileName}.jpg`;
       }
     } catch (e) {
       console.error('Erro ao gerar imagem, usando fallback.', e);
-      const randomImageNumber = Math.floor(Math.random() * 3) + 1;
-      matterResult.data.image = `/images/tech_${randomImageNumber}.png`;
     }
 
-    const finalMarkdown = matter.stringify(matterResult.content, matterResult.data);
-
-    // Salvar o arquivo Markdown
-    const dirPath = path.join(process.cwd(), 'content', 'articles');
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, { recursive: true });
+    // Salvar artigo em PT
+    const matterResultPt = matter(articles.pt);
+    matterResultPt.data.image = imageUrlFinal;
+    const finalMarkdownPt = matter.stringify(matterResultPt.content, matterResultPt.data);
+    const dirPathPt = path.join(process.cwd(), 'content', 'articles', 'pt');
+    if (!fs.existsSync(dirPathPt)) {
+      fs.mkdirSync(dirPathPt, { recursive: true });
     }
-    const filePath = path.join(dirPath, `${fileName}.md`);
-    fs.writeFileSync(filePath, finalMarkdown, 'utf-8');
+    fs.writeFileSync(path.join(dirPathPt, `${fileName}.md`), finalMarkdownPt, 'utf-8');
+
+    // Salvar artigo em EN
+    matterResultEn.data.image = imageUrlFinal;
+    const finalMarkdownEn = matter.stringify(matterResultEn.content, matterResultEn.data);
+    const dirPathEn = path.join(process.cwd(), 'content', 'articles', 'en');
+    if (!fs.existsSync(dirPathEn)) {
+      fs.mkdirSync(dirPathEn, { recursive: true });
+    }
+    fs.writeFileSync(path.join(dirPathEn, `${fileName}.md`), finalMarkdownEn, 'utf-8');
 
     // Atualizar e salvar o histórico
     const historyPath = path.join(process.cwd(), 'data', 'history.json');
@@ -80,7 +86,7 @@ async function main() {
     }
     fs.writeFileSync(historyPath, JSON.stringify(usedUrls, null, 2), 'utf8');
 
-    console.log(`🤖 [GITHUB ACTIONS] Sucesso absoluto! Artigo salvo: ${fileName}.md`);
+    console.log(`🤖 [GITHUB ACTIONS] Sucesso absoluto! Artigos salvos em PT e EN: ${fileName}.md`);
   } catch (error) {
     console.error('🤖 [GITHUB ACTIONS] Erro fatal no processo:', error);
     process.exit(1);

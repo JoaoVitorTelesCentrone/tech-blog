@@ -3,18 +3,23 @@ import Footer from '@/components/Footer';
 import { getArticleData } from '@/lib/markdown';
 import Link from 'next/link';
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const article = await getArticleData(params.slug);
+export default async function PostPage({ params }: { params: { slug: string, lang: string } }) {
+  const lang = params.lang || 'pt'
+  const article = await getArticleData(params.slug, lang)
+  
+  const t = {
+    publishedOn: lang === 'en' ? 'Published on:' : 'Publicado em:',
+    goBack: lang === 'en' ? '← Back to Homepage' : '← Voltar para o Início'
+  };
 
   return (
     <>
       <Header />
       <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-12">
         <article className="max-w-3xl mx-auto">
-          <Link href="/" className="font-label-caps text-label-caps uppercase text-primary hover:underline mb-8 inline-block">
-            ← Voltar para o Início
-          </Link>
-          
+          <Link href={`/${lang}/`} className="font-label-caps text-label-caps uppercase text-primary hover:underline mb-8 inline-block">
+            {t.goBack}
+          </Link>  
           <header className="mb-12 border-b border-primary pb-8" style={{ borderBottomWidth: '0.5pt' }}>
             <div className="flex gap-2 mb-4">
                {article.tags?.map(tag => (
@@ -27,7 +32,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
               {article.title}
             </h1>
             <p className="font-work-sans text-body-md text-on-surface-variant mb-8">
-              Publicado em: {article.date}
+              {t.publishedOn} {article.date}
             </p>
 
             {article.image && (

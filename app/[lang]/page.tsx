@@ -4,10 +4,23 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { getSortedArticlesData } from '@/lib/markdown'
 
-export default function HomePage() {
-  const articles = getSortedArticlesData()
+export default function HomePage({ params }: { params: { lang: string } }) {
+  const lang = params.lang || 'pt'
+  const articles = getSortedArticlesData(lang)
   const latestArticle = articles[0]
   const otherArticles = articles.slice(1, 3)
+  
+  const t = {
+    emptyTitle: lang === 'en' ? 'No articles yet' : 'Ainda não há artigos',
+    emptyDesc: lang === 'en' ? 'Run the /api/cron route to generate the first article.' : 'Execute a rota /api/cron para gerar o primeiro artigo via IA.',
+    todaysEdition: lang === 'en' ? "Today's Edition" : 'Edição de hoje',
+    aiDescription: lang === 'en' ? 'An article generated entirely by Artificial Intelligence based on the latest news from the internet.' : 'Um artigo gerado inteiramente por Inteligência Artificial baseado nas notícias mais recentes da internet.',
+    readArticle: lang === 'en' ? 'Read Article' : 'Ler Artigo',
+    previousPublications: lang === 'en' ? 'Previous Publications' : 'Publicações Anteriores',
+    publishedOn: lang === 'en' ? 'Published on' : 'Publicado em',
+    archive: lang === 'en' ? 'Archive' : 'Arquivo',
+    partnership: lang === 'en' ? 'Editorial Ad — TechPulse Partnership' : 'Anúncio Editorial — TechPulse Partnership'
+  }
 
   return (
     <>
@@ -15,8 +28,8 @@ export default function HomePage() {
       <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-12">
         {articles.length === 0 ? (
           <div className="py-20 text-center">
-            <h1 className="font-newsreader text-4xl text-primary mb-4">Ainda não há artigos</h1>
-            <p className="font-work-sans text-on-surface-variant">Execute a rota /api/cron para gerar o primeiro artigo via IA.</p>
+            <h1 className="font-newsreader text-4xl text-primary mb-4">{t.emptyTitle}</h1>
+            <p className="font-work-sans text-on-surface-variant">{t.emptyDesc}</p>
           </div>
         ) : (
           <>
@@ -25,7 +38,7 @@ export default function HomePage() {
               {/* Left metadata */}
               <div className="col-span-12 md:col-span-2 mb-8 md:mb-0">
                 <div className="md:sticky md:top-28">
-                  <p className="font-label-caps text-label-caps text-on-surface uppercase mb-2">Edição de hoje</p>
+                  <p className="font-label-caps text-label-caps text-on-surface uppercase mb-2">{t.todaysEdition}</p>
                   <p className="font-newsreader text-primary text-2xl font-medium">Nº 0{articles.length}</p>
                   <p className="font-work-sans text-body-md text-on-surface-variant mt-4">{latestArticle.date}</p>
                 </div>
@@ -33,7 +46,7 @@ export default function HomePage() {
 
               {/* Main headline */}
               <div className="col-span-12 md:col-span-7">
-                <Link href={`/post/${latestArticle.slug}`} className="hover:opacity-80 transition-opacity">
+                <Link href={`/${lang}/post/${latestArticle.slug}`} className="hover:opacity-80 transition-opacity">
                   <h1 className="font-newsreader font-semibold text-primary mb-8 leading-[0.95] text-4xl sm:text-5xl lg:text-display-xl">
                     {latestArticle.title}
                   </h1>
@@ -42,7 +55,7 @@ export default function HomePage() {
                 <div className="flex flex-col md:flex-row gap-8">
                   <div className="flex-1">
                     <p className="font-work-sans text-body-lg text-on-surface italic">
-                      Um artigo gerado inteiramente por Inteligência Artificial baseado nas notícias mais recentes da internet.
+                      {t.aiDescription}
                     </p>
                   </div>
                   <div className="flex-1">
@@ -59,7 +72,7 @@ export default function HomePage() {
 
               {/* Cover image */}
               <div className="col-span-12 md:col-span-3 mt-8 md:mt-0">
-                <Link href={`/post/${latestArticle.slug}`}>
+                <Link href={`/${lang}/post/${latestArticle.slug}`}>
                   <div className="aspect-[3/4] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 bg-surface-container-low flex items-center justify-center relative">
                     {latestArticle.image ? (
                       <Image src={latestArticle.image} alt={latestArticle.title} fill className="object-cover" />
@@ -77,7 +90,7 @@ export default function HomePage() {
               style={{ borderWidth: '0.5pt' }}
             >
               <span className="font-label-caps text-label-caps text-outline uppercase tracking-widest text-[10px]">
-                Anúncio Editorial — TechPulse Partnership
+                {t.partnership}
               </span>
             </div>
 
@@ -88,22 +101,22 @@ export default function HomePage() {
                 <div className="col-span-12 md:col-span-8 border-2 border-primary p-8 md:p-12">
                   <div className="mb-8 md:mb-12">
                     <span className="font-label-caps text-label-caps text-accent-coral uppercase tag-underline">
-                      Publicações Anteriores
+                      {t.previousPublications}
                     </span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
                     <div>
-                      <Link href={`/post/${otherArticles[0].slug}`} className="hover:underline">
+                      <Link href={`/${lang}/post/${otherArticles[0].slug}`} className="hover:underline">
                         <h2 className="font-newsreader font-medium text-primary mb-6 text-2xl md:text-headline-lg leading-tight">
                           {otherArticles[0].title}
                         </h2>
                       </Link>
                       <p className="font-work-sans text-body-md text-on-surface-variant mb-8">
-                        Publicado em {otherArticles[0].date}
+                        {t.publishedOn} {otherArticles[0].date}
                       </p>
                       <div className="flex items-center gap-3">
-                        <Link className="font-label-caps text-[10px] uppercase text-accent-coral ml-auto hover:underline" href={`/post/${otherArticles[0].slug}`}>
-                          Ler Artigo
+                        <Link className="font-label-caps text-[10px] uppercase text-accent-coral ml-auto hover:underline" href={`/${lang}/post/${otherArticles[0].slug}`}>
+                          {t.readArticle}
                         </Link>
                       </div>
                     </div>
@@ -124,10 +137,10 @@ export default function HomePage() {
                       <div>
                         <div className="mb-6">
                           <span className="font-label-caps text-label-caps text-on-surface uppercase tag-underline">
-                            Arquivo
+                            {t.archive}
                           </span>
                         </div>
-                        <Link href={`/post/${otherArticles[1].slug}`} className="hover:underline">
+                        <Link href={`/${lang}/post/${otherArticles[1].slug}`} className="hover:underline">
                           <h3 className="font-newsreader font-medium text-primary mb-4 text-headline-md">
                             {otherArticles[1].title}
                           </h3>

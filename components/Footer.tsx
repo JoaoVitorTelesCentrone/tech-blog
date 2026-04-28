@@ -1,6 +1,19 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const pathname = usePathname() || '/pt'
+  const lang = pathname.split('/')[1] === 'en' ? 'en' : 'pt'
+
+  const t = {
+    rights: lang === 'en' ? '© 2024 TechPulse Editorial. All rights reserved.' : '© 2024 TechPulse Editorial. Todos os direitos reservados.',
+    privacy: lang === 'en' ? 'Privacy Policy' : 'Política de Privacidade',
+    terms: lang === 'en' ? 'Terms of Service' : 'Termos de Uso',
+    contact: lang === 'en' ? 'Contact' : 'Contato'
+  }
+
   return (
     <footer
       className="bg-white dark:bg-[#1A1A1A] border-t border-[#1A1A1A] dark:border-stone-700"
@@ -12,7 +25,7 @@ export default function Footer() {
             TechPulse Editorial
           </span>
           <p className="mt-4 font-newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400">
-            © 2024 TechPulse Editorial. Todos os direitos reservados.
+            {t.rights}
           </p>
         </div>
 
@@ -21,19 +34,19 @@ export default function Footer() {
             href="#"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
-            Política de Privacidade
+            {t.privacy}
           </Link>
           <Link
             href="#"
             className="text-stone-600 dark:text-stone-400 underline underline-offset-4 decoration-accent-coral"
           >
-            Termos de Uso
+            {t.terms}
           </Link>
           <Link
             href="#"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
-            Contato
+            {t.contact}
           </Link>
         </div>
 
