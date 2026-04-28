@@ -20,20 +20,18 @@ export type Article = ArticleFrontmatter & {
 const articlesDirectory = path.join(process.cwd(), 'content', 'articles');
 
 // Obtém uma lista ordenada de todos os artigos, do mais recente ao mais antigo
-export function getSortedArticlesData(lang: string = 'pt'): ArticleFrontmatter[] {
-  const dirPath = path.join(articlesDirectory, lang);
-  
+export function getSortedArticlesData(): ArticleFrontmatter[] {
   // Garantir que a pasta exista
-  if (!fs.existsSync(dirPath)) {
+  if (!fs.existsSync(articlesDirectory)) {
     return [];
   }
 
-  const fileNames = fs.readdirSync(dirPath);
+  const fileNames = fs.readdirSync(articlesDirectory);
   const allArticlesData = fileNames
     .filter(fileName => fileName.endsWith('.md'))
     .map(fileName => {
       const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(dirPath, fileName);
+      const fullPath = path.join(articlesDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
 
       // Usa gray-matter para separar a seção de metadados (frontmatter)
@@ -58,8 +56,8 @@ export function getSortedArticlesData(lang: string = 'pt'): ArticleFrontmatter[]
 }
 
 // Obtém o conteúdo completo de um artigo pelo slug
-export async function getArticleData(slug: string, lang: string = 'pt'): Promise<Article> {
-  const fullPath = path.join(articlesDirectory, lang, `${slug}.md`);
+export async function getArticleData(slug: string): Promise<Article> {
+  const fullPath = path.join(articlesDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Usa gray-matter para separar a seção de metadados
