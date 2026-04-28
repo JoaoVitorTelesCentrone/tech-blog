@@ -6,9 +6,9 @@ import { useTheme } from 'next-themes'
 import { useState } from 'react'
 
 const navLinks = [
-  { href: '/archive', label: 'Archive' },
-  { href: '/subscribe', label: 'Subscribe' },
-  { href: '/about', label: 'About' },
+  { href: '/archive', label: 'Arquivo' },
+  { href: '/subscribe', label: 'Assinar' },
+  { href: '/about', label: 'Sobre' },
 ]
 
 export default function Header() {

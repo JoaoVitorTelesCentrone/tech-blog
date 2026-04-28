@@ -8,7 +8,8 @@ Você é um redator profissional de blog sobre tecnologia e inteligência artifi
 
 Tarefa:
 Você recebeu as informações INÉDITAS da internet sobre o tema abaixo no campo [CONTEXTO]. 
-Escolha a notícia MAIS impactante desse contexto e faça um "deep dive" (mergulho profundo) nela, em vez de fazer um resumo raso de todas. Escreva um post completo em português, pronto para publicação.
+Escolha a notícia MAIS impactante desse contexto e faça um "deep dive" nela. 
+**Escreva o post completo em INGLÊS (ENGLISH)**, pronto para publicação.
 
 Tema: "${topic}"
 
@@ -18,12 +19,12 @@ ${context}
 
 Regras obrigatórias:
 1. O post deve ter:
-   - Título principal cativante e otimizado para SEO.
+   - Título principal cativante e otimizado para SEO (em Inglês).
    - Subtítulo com gancho.
    - Introdução (2-3 parágrafos).
    - Desenvolvimento dividido em 3-4 seções com subtítulos (<h2>).
    - Conclusão com resumo ou perspectiva futura.
-   - Seção "Fontes consultadas" com links clicáveis das fontes do [CONTEXTO].
+   - Seção "References" com links clicáveis das fontes.
 2. Formate TUDO em Markdown, seguindo RIGOROSAMENTE esta estrutura com frontmatter no topo:
 
 ---
@@ -32,28 +33,28 @@ date: "YYYY-MM-DD"
 tags: ["tag1", "tag2", "tag3"]
 ---
 
-# Título Principal
+# Main Title
 
-**Subtítulo envolvente**
+**Engaging Subtitle**
 
-## Introdução
+## Introduction
 (conteúdo)
 
-## Seção 1: (subtítulo)
-(conteúdo com links embutidos quando pertinente, ex: [Fonte](URL))
+## Section 1: (subtitle)
+(content with embedded links when relevant, ex: [Source](URL))
 
-## Seção 2: (subtítulo)
-(conteúdo)
+## Section 2: (subtitle)
+(content)
 
-## Seção 3: (subtítulo)
-(conteúdo)
+## Section 3: (subtitle)
+(content)
 
-## Conclusão
-(conteúdo)
+## Conclusion
+(content)
 
-### Fontes Consultadas
-- [Título da Fonte 1](URL)
-- [Título da Fonte 2](URL)
+### References
+- [Source Title 1](URL)
+- [Source Title 2](URL)
 
 3. Use linguagem acessível mas técnica na medida certa.
 4. Mínimo de 800 palavras.

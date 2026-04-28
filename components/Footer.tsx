@@ -12,7 +12,7 @@ export default function Footer() {
             TechPulse Editorial
           </span>
           <p className="mt-4 font-newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400">
-            © 2024 TechPulse Editorial. All rights reserved.
+            © 2024 TechPulse Editorial. Todos os direitos reservados.
           </p>
         </div>
 
@@ -21,19 +21,19 @@ export default function Footer() {
             href="#"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
-            Privacy Policy
+            Política de Privacidade
           </Link>
           <Link
             href="#"
             className="text-stone-600 dark:text-stone-400 underline underline-offset-4 decoration-accent-coral"
           >
-            Terms of Service
+            Termos de Uso
           </Link>
           <Link
             href="#"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
-            Contact
+            Contato
           </Link>
         </div>
 
