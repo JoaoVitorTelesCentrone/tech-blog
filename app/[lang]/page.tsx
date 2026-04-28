@@ -12,7 +12,7 @@ export default function HomePage({ params }: { params: { lang: string } }) {
   
   const t = {
     emptyTitle: lang === 'en' ? 'No articles yet' : 'Ainda não há artigos',
-    emptyDesc: lang === 'en' ? 'Run the /api/cron route to generate the first article.' : 'Execute a rota /api/cron para gerar o primeiro artigo via IA.',
+    emptyDesc: lang === 'en' ? 'Please wait for the AI to generate the first publication.' : 'Aguarde o robô gerar a primeira publicação.',
     todaysEdition: lang === 'en' ? "Today's Edition" : 'Edição de hoje',
     aiDescription: lang === 'en' ? 'An article generated entirely by Artificial Intelligence based on the latest news from the internet.' : 'Um artigo gerado inteiramente por Inteligência Artificial baseado nas notícias mais recentes da internet.',
     readArticle: lang === 'en' ? 'Read Article' : 'Ler Artigo',
