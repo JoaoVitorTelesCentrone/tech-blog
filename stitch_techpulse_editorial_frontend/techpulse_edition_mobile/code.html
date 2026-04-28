@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#f5ece6",
+                      "surface-bright": "#fff8f4",
+                      "inverse-on-surface": "#f8efe9",
+                      "on-tertiary-fixed-variant": "#92001c",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e6e2db",
+                      "tertiary-container": "#410007",
+                      "background": "#fff8f4",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "on-tertiary-container": "#f1414d",
+                      "on-secondary": "#ffffff",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#410007",
+                      "tertiary": "#000000",
+                      "tertiary-fixed": "#ffdad8",
+                      "surface-container-high": "#efe7e0",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "error": "#ba1a1a",
+                      "secondary": "#605e59",
+                      "inverse-primary": "#c8c6c5",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#66645f",
+                      "outline": "#747878",
+                      "surface-container-highest": "#eae1db",
+                      "outline-variant": "#c4c7c7",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#858383",
+                      "on-surface": "#1f1b17",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#5f5e5e",
+                      "primary-fixed": "#e5e2e1",
+                      "surface-dim": "#e1d8d2",
+                      "on-surface-variant": "#444748",
+                      "tertiary-fixed-dim": "#ffb3b1",
+                      "inverse-surface": "#34302b",
+                      "secondary-container": "#e6e2db",
+                      "on-secondary-fixed": "#1c1c18",
+                      "on-primary-fixed": "#1c1b1b",
+                      "surface": "#fff8f4",
+                      "surface-variant": "#eae1db",
+                      "on-secondary-fixed-variant": "#484742",
+                      "on-background": "#1f1b17",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#1c1b1b",
+                      "surface-container-low": "#fbf2eb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1.5rem",
+                      "grid-margin": "4rem",
+                      "section-gap": "8rem",
+                      "grid-gutter": "1.5rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "body-md": ["Work Sans"],
+                      "body-lg": ["Work Sans"],
+                      "display-xl": ["Newsreader"],
+                      "label-caps": ["Work Sans"],
+                      "headline-md": ["Newsreader"],
+                      "headline-lg": ["Newsreader"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .editorial-rule {
+            border-top: 0.5pt solid #000000;
+        }
+        .tag-underline {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-white border-b-[0.5pt] border-black flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-black" data-icon="menu">menu</span>
+<span class="font-serif font-black text-lg uppercase tracking-tight text-black">Nº 047 | TECHPULSE</span>
+</div>
+<div class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold">
+<span class="text-on-tertiary-container">PT</span> | <span class="text-neutral-400">EN</span>
+</div>
+</header>
+<main class="pt-20 pb-24">
+<!-- Hero Section -->
+<section class="px-6 mb-stack-md">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-black">DEEP ANALYSIS</span>
+<h1 class="font-headline-lg text-headline-lg leading-tight text-black">O Paradoxo da Inteligência Autônoma</h1>
+<div class="editorial-rule pt-2"></div>
+</div>
+<div class="mt-6">
+<img alt="Abstract digital representation of neural networks" class="w-full h-[400px] object-cover grayscale brightness-90" data-alt="Monochromatic high-contrast architectural abstract representing neural structures with sharp shadows and stark white lighting in a minimalist gallery setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZ_3-Fg6-cU0nOuUCme1AOanATmH_TSOIGiDGwnl5GLuFZFBCd41kj6n81I3XRwi9gdtOrp5LrcEct0axJATisWyLFn-NwsBzbGSZxnSmmZDhJc-GQIKUF1NQjsc5Ul3f3gYgnSKleF9QIAa47DS4KFfHLFFC6RTYg9Ch26Vc6i-_YxtMo258S8u-G9TkzTOv2t_xe7oEWsivNves_GXWZxixWHHtCMyWiJRzJl1godfROuajr6---XP4ogkChj4_505z6kQnbVA"/>
+<p class="mt-4 font-label-caps text-[10px] italic text-neutral-500 uppercase tracking-wider text-right">
+                    Visual Meta-narrative: Neural Decoupling. 2024.
+                </p>
+</div>
+</section>
+<!-- Intro Text (Bilingual) -->
+<section class="px-6 py-stack-md flex flex-col gap-8 bg-surface-container-low">
+<div class="border-l-[0.5pt] border-black pl-6">
+<p class="font-headline-md text-headline-md italic mb-4">A autonomia absoluta exige a renúncia do controle humano?</p>
+<p class="font-body-lg text-body-lg text-on-surface">
+                    Nesta edição, exploramos como a inteligência artificial está migrando de ferramentas assistivas para agentes de decisão independentes, criando um vácuo de responsabilidade ética que ainda não sabemos preencher.
+                </p>
+</div>
+<div class="border-l-[0.5pt] border-neutral-300 pl-6 opacity-60">
+<p class="font-body-md text-body-md text-on-surface">
+                    In this edition, we explore how artificial intelligence is migrating from assistive tools to independent decision agents, creating an ethical responsibility vacuum that we have yet to learn how to fill.
+                </p>
+</div>
+</section>
+<!-- News Summary Cards -->
+<section class="px-6 py-stack-md flex flex-col gap-12">
+<h2 class="font-label-caps text-label-caps uppercase tracking-[0.3em] border-b-[0.5pt] border-black pb-2">Summaries / Sumários</h2>
+<!-- Card 1 -->
+<article class="flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-label-caps text-label-caps uppercase tag-underline">ROBOTICS</span>
+<span class="font-label-caps text-[10px] text-neutral-400">12.05.2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-black">A Evolução dos Humanoides em Ambientes Dinâmicos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Novos modelos de locomoção permitem que robôs naveguem em terrenos imprevisíveis sem mapeamento prévio, utilizando apenas feedback tátil em tempo real.
+                </p>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-black flex items-center gap-2 group" href="#">
+                    Ler na fonte 
+                    <span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<div class="editorial-rule mt-4 opacity-20"></div>
+</article>
+<!-- Card 2 -->
+<article class="flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-label-caps text-label-caps uppercase tag-underline">CYBERSECURITY</span>
+<span class="font-label-caps text-[10px] text-neutral-400">11.05.2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-black">Criptografia Pós-Quântica no Setor Bancário</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    As maiores instituições financeiras da Europa iniciam a transição para protocolos resistentes a computação quântica para proteger ativos transacionais.
+                </p>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-black flex items-center gap-2 group" href="#">
+                    Ler na fonte 
+                    <span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<div class="editorial-rule mt-4 opacity-20"></div>
+</article>
+<!-- Card 3 -->
+<article class="flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-label-caps text-label-caps uppercase tag-underline">POLICY</span>
+<span class="font-label-caps text-[10px] text-neutral-400">09.05.2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-black">Regulação de Algoritmos Preditivos no Judiciário</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Novas diretrizes exigem total transparência sobre os datasets utilizados em sistemas que auxiliam juízes na análise de risco de reincidência.
+                </p>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-black flex items-center gap-2 group" href="#">
+                    Ler na fonte 
+                    <span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t-[0.5pt] border-black flex flex-col items-center gap-6 py-12 px-6 w-full text-center">
+<div class="font-serif font-black text-2xl uppercase tracking-tighter">TECHPULSE</div>
+<div class="flex gap-4">
+<a class="font-label-caps text-[10px] uppercase text-neutral-400 hover:text-black transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-[10px] uppercase text-neutral-400 hover:text-black transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-[10px] uppercase text-neutral-400 hover:text-black transition-colors" href="#">Masthead</a>
+</div>
+<p class="font-sans text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+            © 2024 TECHPULSE EDITORIAL. ALL RIGHTS RESERVED.
+        </p>
+</footer>
+<!-- Bottom Navigation (Mobile Requirement) -->
+<nav class="fixed bottom-0 w-full bg-white border-t-[0.5pt] border-black flex justify-around py-4 md:hidden">
+<button class="flex flex-col items-center gap-1 font-bold underline underline-offset-4 decoration-black">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-caps text-[8px]">LATEST</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-caps text-[8px]">ANALYSIS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-caps text-[8px]">ARCHIVE</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-label-caps text-[8px]">ABOUT</span>
+</button>
+</nav>
+</body></html>

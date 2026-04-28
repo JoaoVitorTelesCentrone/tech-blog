@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#e6e2db",
+                      "surface-bright": "#fff8f4",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#410007",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#e1d8d2",
+                      "surface": "#fff8f4",
+                      "on-secondary-container": "#66645f",
+                      "surface-container-low": "#fbf2eb",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "surface-container-highest": "#eae1db",
+                      "tertiary": "#000000",
+                      "on-surface-variant": "#444748",
+                      "on-background": "#1f1b17",
+                      "on-surface": "#1f1b17",
+                      "surface-variant": "#eae1db",
+                      "on-secondary-fixed-variant": "#484742",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#e5e2e1",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "on-primary-container": "#858383",
+                      "on-tertiary-container": "#f1414d",
+                      "outline": "#747878",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-tertiary-fixed": "#410007",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#efe7e0",
+                      "tertiary-fixed": "#ffdad8",
+                      "secondary": "#605e59",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#474746",
+                      "inverse-on-surface": "#f8efe9",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#5f5e5e",
+                      "secondary-container": "#e6e2db",
+                      "on-tertiary-fixed-variant": "#92001c",
+                      "primary-container": "#1c1b1b",
+                      "surface-container": "#f5ece6",
+                      "background": "#fff8f4",
+                      "inverse-primary": "#c8c6c5",
+                      "on-secondary-fixed": "#1c1c18",
+                      "tertiary-fixed-dim": "#ffb3b1",
+                      "inverse-surface": "#34302b",
+                      "outline-variant": "#c4c7c7",
+                      "secondary-fixed-dim": "#c9c6c0",
+                      "accent-coral": "#f1414d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-margin": "4rem",
+                      "grid-gutter": "1.5rem",
+                      "section-gap": "8rem",
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1.5rem"
+              },
+              "fontFamily": {
+                      "body-lg": ["Work Sans"],
+                      "headline-md": ["Newsreader"],
+                      "label-caps": ["Work Sans"],
+                      "headline-lg": ["Newsreader"],
+                      "body-md": ["Work Sans"],
+                      "display-xl": ["Newsreader"]
+              },
+              "fontSize": {
+                      "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bilingual-toggle span.active {
+            color: #f1414d;
+        }
+        .tag-underline {
+            position: relative;
+        }
+        .tag-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 1px;
+            background-color: currentColor;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Breaking News Banner -->
+<div class="w-full bg-accent-coral text-white py-2 px-4 text-center sticky top-0 z-[60]">
+<p class="font-label-caps text-[10px] uppercase tracking-[0.2em]">Últimas Notícias: A Inteligência Artificial Generativa alcança novos marcos na tradução editorial em tempo real.</p>
+</div>
+<!-- TopAppBar -->
+<nav class="sticky top-[32px] z-50 bg-white dark:bg-[#1A1A1A] border-b-[0.5pt] border-[#1A1A1A] dark:border-stone-700">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold uppercase tracking-tighter text-[#1A1A1A] dark:text-stone-100">TechPulse</span>
+<div class="hidden md:flex gap-6">
+<a class="text-[#1A1A1A] dark:text-white border-b-2 border-accent-coral font-serif italic text-lg Newsreader" href="#">Archive</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-300 font-serif italic text-lg Newsreader px-2" href="#">Subscribe</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-300 font-serif italic text-lg Newsreader px-2" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Bilingual Toggle -->
+<div class="flex items-center gap-2 font-label-caps text-[11px] cursor-pointer bilingual-toggle">
+<span class="active">PT</span>
+<span class="text-outline">|</span>
+<span class="text-on-surface-variant hover:text-accent-coral transition-colors">EN</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#1A1A1A] dark:text-stone-100 cursor-pointer scale-100 active:scale-98 transition-transform">language</span>
+<span class="material-symbols-outlined text-[#1A1A1A] dark:text-stone-100 cursor-pointer scale-100 active:scale-98 transition-transform">dark_mode</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-[1440px] mx-auto px-8 md:px-grid-margin py-12">
+<!-- Hero Section -->
+<header class="grid grid-cols-12 gap-grid-gutter mb-section-gap">
+<div class="col-span-12 md:col-span-2 mb-8 md:mb-0">
+<div class="sticky top-24">
+<p class="font-label-caps text-on-surface uppercase mb-2">Edição de hoje</p>
+<p class="font-headline-md text-primary text-2xl">Nº 047</p>
+<p class="font-body-md text-on-surface-variant mt-4">28 de Abril, 2024</p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7">
+<h1 class="font-display-xl text-primary mb-8 leading-[0.95]">O Futuro da Consciência Sintética: Limites e Ética.</h1>
+<div class="border-b-[0.5pt] border-primary mb-8"></div>
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<p class="font-body-lg text-on-surface italic">A intersecção entre biologia e silício está redefinindo o que chamamos de inteligência. Analisamos os impactos na infraestrutura global.</p>
+</div>
+<div class="flex-1">
+<p class="font-body-md text-on-surface-variant">The intersection between biology and silicon is redefining what we call intelligence. We analyze the impacts on global infrastructure and human labor.</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 mt-8 md:mt-0">
+<div class="aspect-[3/4] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Cover Art" class="w-full h-full object-cover" data-alt="Abstract cinematic 3D render of a neural network made of glass fibers and liquid silver, dark moody lighting, editorial tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDz-8_N7qmQIb14ixUlQ5hyEpI6Cd_QO1J9HGHZTkL9DbjWwUaI5qeoxnIFN1jZDO_DXnRfkZ4RNENGatTbMY82XUH9ZSc2o3a5ERsiIucyPg51irGAJSjpBsHUsg_xfj_fC2DC7hbJZ8SPR3h2juWBoPemtiVdPieVQsBioR5j70abakMT-92skkm_Ghf4HK4S2SUnQMTwUgUe45XMJ20K40H8iwfxI0gHQ_3d9nM0339JYJF_m5xqYeJnh_rwak_bZma1ivzrv8"/>
+</div>
+</div>
+</header>
+<!-- AdSense Placeholder -->
+<div class="w-full h-32 mb-section-gap border-[0.5pt] border-outline-variant flex items-center justify-center bg-surface-container-low">
+<span class="font-label-caps text-outline uppercase tracking-widest text-[10px]">Anúncio Editorial — TechPulse Partnership</span>
+</div>
+<!-- Editorial Grid -->
+<section class="grid grid-cols-12 gap-grid-gutter mb-section-gap">
+<!-- Featured Summary Card (Importance 10) -->
+<div class="col-span-12 md:col-span-8 border-[2px] border-primary p-12">
+<div class="mb-12">
+<span class="font-label-caps text-accent-coral uppercase tag-underline">Semicondutores</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+<div>
+<h2 class="font-headline-lg text-primary mb-6">A Crise Silenciosa na Cadeia de Chips de 2nm</h2>
+<p class="font-body-md text-on-surface-variant mb-8">Enquanto o mercado foca em software de IA, a infraestrutura física enfrenta um gargalo sem precedentes em Taiwan e na Holanda. Relatórios indicam que o custo de produção de wafers subiu 40% no último semestre.</p>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-white" data-weight="fill">verified</span>
+</div>
+<span class="font-label-caps text-[10px] uppercase">Fonte: Bloomberg Editorial</span>
+<a class="font-label-caps text-[10px] uppercase text-accent-coral ml-auto hover:underline" href="#">Ler Fonte</a>
+</div>
+</div>
+<div class="aspect-square w-full">
+<img alt="Semiconductor wafer" class="w-full h-full object-cover grayscale" data-alt="Macro photography of a silicon wafer circuit board with iridescent light reflections, high tech precision, minimalist composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGtY3DShTV4Bg7mG_NB6TBnhihu9isuOR9B-ErYI_azxAFSKy-CZIIBFr5o3QCXTMdkBIYdeI06JNnqJncULs1Le3TlLlkn8JAot-qxqOWdTqQ5vuh5MOHfoiPN6JyUUKSFfCYauorfbgP1OelrKZ9JcR5bBudtS_TZDDHYIq0CfVXni9_fGw1aY6Mr2lCj1IBrDZmMDe7fvyY-La1W78LYO6nqVoZn7XdQsm_aIJN8pyapxmBjM7AIaErwiyYoIV9tcnppY4_FTk"/>
+</div>
+</div>
+</div>
+<!-- Right Column Cards (Importance 5-7) -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-grid-gutter">
+<!-- Card 1 -->
+<div class="border-[0.5pt] border-primary p-8">
+<div class="mb-6">
+<span class="font-label-caps text-on-surface uppercase tag-underline">Cibersegurança</span>
+</div>
+<h3 class="font-headline-md text-primary mb-4">Criptografia Pós-Quântica</h3>
+<p class="font-body-md text-on-surface-variant mb-6">O NIST anuncia novos padrões para proteger dados contra futuros computadores quânticos de larga escala.</p>
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 bg-stone-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary">security</span>
+</div>
+<span class="font-label-caps text-[9px] uppercase">Wired Business</span>
+<a class="font-label-caps text-[9px] uppercase text-accent-coral ml-auto hover:underline" href="#">Ler Fonte</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="border-[0.5pt] border-primary p-8">
+<div class="mb-6">
+<span class="font-label-caps text-on-surface uppercase tag-underline">Energia</span>
+</div>
+<h3 class="font-headline-md text-primary mb-4">Fusão Nuclear em Data Centers</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Startups em Seattle buscam alimentar o processamento de LLMs com energia limpa de fusão até 2028.</p>
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 bg-stone-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary">bolt</span>
+</div>
+<span class="font-label-caps text-[9px] uppercase">TechCrunch</span>
+<a class="font-label-caps text-[9px] uppercase text-accent-coral ml-auto hover:underline" href="#">Ler Fonte</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Subscription Segment -->
+<section class="w-full py-20 border-t-[0.5pt] border-primary flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="max-w-md">
+<h4 class="font-headline-md italic mb-4">Assine o TechPulse Morning Report</h4>
+<p class="font-body-md text-on-surface-variant">Uma curadoria diária do que realmente importa na tecnologia, entregue às 06:00 BRT.</p>
+</div>
+<div class="w-full max-w-lg">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-[10px] uppercase text-on-surface-variant">Seu Email Profissional</label>
+<div class="flex border-b-[1px] border-primary py-2">
+<input class="bg-transparent border-none w-full focus:ring-0 font-body-md placeholder:text-stone-300" placeholder="nome@companhia.com.br" type="email"/>
+<button class="font-label-caps text-[11px] uppercase tracking-widest text-primary hover:text-accent-coral transition-colors px-4">Inscrever</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#1A1A1A] border-t-[0.5pt] border-[#1A1A1A] dark:border-stone-700">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-[1440px] mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="text-lg font-bold text-[#1A1A1A] dark:text-stone-100 uppercase tracking-tighter">TechPulse Editorial</span>
+<p class="mt-4 font-serif text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400">© 2024 TechPulse Editorial. All rights reserved.</p>
+</div>
+<div class="flex gap-12 font-serif Newsreader text-sm uppercase tracking-widest">
+<a class="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors" href="#">Privacy Policy</a>
+<a class="text-stone-600 dark:text-stone-400 underline underline-offset-4 decoration-accent-coral" href="#">Terms of Service</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors" href="#">Contact</a>
+</div>
+<div class="mt-8 md:mt-0 flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity">rss_feed</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity">alternate_email</span>
+</div>
+</div>
+</footer>
+</body></html>

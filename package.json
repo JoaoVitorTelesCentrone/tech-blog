@@ -1,0 +1,36 @@
+{
+  "name": "techpulse-editorial",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate": "npx tsx --env-file=.env scripts/generate-article.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.50.1",
+    "date-fns": "^4.1.0",
+    "gray-matter": "^4.0.3",
+    "next": "^14.2.29",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.29",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5"
+  }
+}

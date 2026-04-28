@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f5ece6",
+                        "surface-bright": "#fff8f4",
+                        "inverse-on-surface": "#f8efe9",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e6e2db",
+                        "tertiary-container": "#410007",
+                        "background": "#fff8f4",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-container": "#f1414d",
+                        "on-secondary": "#ffffff",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#410007",
+                        "tertiary": "#000000",
+                        "tertiary-fixed": "#ffdad8",
+                        "surface-container-high": "#efe7e0",
+                        "secondary-fixed-dim": "#c9c6c0",
+                        "error": "#ba1a1a",
+                        "secondary": "#605e59",
+                        "inverse-primary": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#66645f",
+                        "outline": "#747878",
+                        "surface-container-highest": "#eae1db",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#858383",
+                        "on-surface": "#1f1b17",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-dim": "#e1d8d2",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "inverse-surface": "#34302b",
+                        "secondary-container": "#e6e2db",
+                        "on-secondary-fixed": "#1c1c18",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface": "#fff8f4",
+                        "surface-variant": "#eae1db",
+                        "on-secondary-fixed-variant": "#484742",
+                        "on-background": "#1f1b17",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-low": "#fbf2eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1.5rem",
+                        "grid-margin": "4rem",
+                        "section-gap": "8rem",
+                        "grid-gutter": "1.5rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "display-xl": ["Newsreader"],
+                        "label-caps": ["Work Sans"],
+                        "headline-md": ["Newsreader"],
+                        "headline-lg": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f4;
+            color: #1f1b17;
+        }
+        .editorial-line {
+            height: 0.5pt;
+            background-color: #1c1b1b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md bg-background text-on-background">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b-[0.5pt] border-black flex justify-between items-center w-full px-6 py-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-black" data-icon="menu">menu</span>
+<h1 class="font-serif font-bold uppercase tracking-tight text-lg text-black">Nº 047 | TECHPULSE</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-sans text-[10px] uppercase tracking-widest text-black">PT</span>
+<span class="text-neutral-400">|</span>
+<span class="font-sans text-[10px] uppercase tracking-widest text-on-tertiary-container font-bold">EN</span>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-md mx-auto">
+<section class="mb-section-gap">
+<div class="flex flex-col gap-4 mb-8">
+<span class="font-label-caps text-label-caps uppercase border-b border-black w-fit pb-1">Manifesto</span>
+<h2 class="font-headline-lg text-headline-lg leading-tight">Navigating the Singularity with Rigor.</h2>
+</div>
+<div class="space-y-6">
+<p class="font-body-lg text-body-lg italic">
+                    TechPulse is not a news aggregator. It is a digital record of our transition into an AI-augmented reality.
+                </p>
+<div class="editorial-line"></div>
+<p class="font-body-md text-body-md">
+                    In an era of algorithmic noise, we prioritize the document over the feed. Our editorial vision is rooted in "Calm Authority"—providing deep, long-form analysis that respects the reader's intellectual autonomy. We believe technology should be critiqued with the same vigor as classical literature or geopolitical shifts.
+                </p>
+</div>
+</section>
+<section class="mb-section-gap relative">
+<div class="absolute -left-4 top-0 h-full w-[0.5pt] bg-black opacity-20"></div>
+<div class="flex flex-col gap-6">
+<span class="font-label-caps text-label-caps uppercase text-on-secondary-container">The Ethics</span>
+<p class="font-body-md text-body-md">
+                    Every edition is numbered, archived, and treated as a permanent piece of journalism. We reject the "engagement hack" and embrace the asymmetric grid of high-end print media.
+                </p>
+</div>
+</section>
+<section class="mb-section-gap">
+<div class="mb-stack-md">
+<h3 class="font-headline-md text-headline-md mb-2">Sources we trust</h3>
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-8">THE INTELLECTUAL BACKBONE</p>
+</div>
+<div class="flex flex-col border-t-[0.5pt] border-black">
+<div class="py-6 border-b-[0.5pt] border-black flex justify-between items-center group transition-colors hover:bg-black hover:text-white px-2">
+<span class="font-body-lg text-body-lg">The Long Now Foundation</span>
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</div>
+<div class="py-6 border-b-[0.5pt] border-black flex justify-between items-center group transition-colors hover:bg-black hover:text-white px-2">
+<span class="font-body-lg text-body-lg">MIT Technology Review</span>
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</div>
+<div class="py-6 border-b-[0.5pt] border-black flex justify-between items-center group transition-colors hover:bg-black hover:text-white px-2">
+<span class="font-body-lg text-body-lg">Aeon Magazine</span>
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</div>
+<div class="py-6 border-b-[0.5pt] border-black flex justify-between items-center group transition-colors hover:bg-black hover:text-white px-2">
+<span class="font-body-lg text-body-lg">Quanta Magazine</span>
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</div>
+</div>
+</section>
+<section class="bg-surface-container p-8 mb-section-gap">
+<div class="flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md">Bilingual Integrity</h3>
+<div class="editorial-line bg-on-tertiary-container w-12"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Language is the primary interface of thought. TechPulse maintains a dual-language infrastructure (PT|EN) to bridge the discourse between Lusophone innovation and global technological standard. Our translations are not automated; they are curated to preserve nuances of intent and cultural context.
+                </p>
+<div class="pt-4">
+<button class="px-6 py-3 border border-black font-label-caps text-label-caps uppercase hover:bg-black hover:text-white transition-all active:scale-95">
+                        Switch to Portuguese
+                    </button>
+</div>
+</div>
+</section>
+<div class="w-full h-64 mb-12 overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-90" data-alt="Minimalist editorial desk with a vintage printing press element and soft overhead light on textured off-white paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdvQ6E5FQzreSkU-xMiTCP6mFrp4fJ2eHt5XYam7XxrD8kG9C-eaKBOgmJJJomCBzbq_ntAa1ru7R1XD-AVi5fYu0xOQ7Xd0Qjg4vXqpBdfYecy8jKtPXiKKXEuT8oYjgNuytiKAxQbfd_BQIyxrCN3G3cuBdBIv-rA17InOQsOfimOKUswtolSunApZ-bJb-qbph7tQ4hCA_9knxduYxPNhN_f3ArjOfmyGFW_TGsvncHQGMzG-ql7YOnb2iFzhGLy5IdDcao5PQ"/>
+</div>
+</main>
+<footer class="border-t-[0.5pt] border-black py-12 px-6 flex flex-col items-center gap-6 text-center">
+<span class="font-sans text-[10px] uppercase tracking-[0.2em] text-neutral-400">© 2024 TECHPULSE EDITORIAL. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-6">
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-black transition-colors" href="#">Privacy Policy</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-black transition-colors" href="#">Terms of Service</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-neutral-400 hover:text-black transition-colors" href="#">Masthead</a>
+</div>
+</footer>
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t-[0.5pt] border-black md:hidden flex justify-around py-3 px-6 z-50">
+<div class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-sans text-[8px] uppercase tracking-tighter">Latest</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-sans text-[8px] uppercase tracking-tighter">Analysis</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-sans text-[8px] uppercase tracking-tighter">Archive</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-black font-bold underline underline-offset-4 decoration-black">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-sans text-[8px] uppercase tracking-tighter">About</span>
+</div>
+</nav>
+</body></html>

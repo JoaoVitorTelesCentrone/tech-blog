@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&amp;family=Work+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#e6e2db",
+                    "surface-bright": "#fff8f4",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#410007",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#e1d8d2",
+                    "surface": "#fff8f4",
+                    "on-secondary-container": "#66645f",
+                    "surface-container-low": "#fbf2eb",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container-highest": "#eae1db",
+                    "tertiary": "#000000",
+                    "on-surface-variant": "#444748",
+                    "on-background": "#1f1b17",
+                    "on-surface": "#1f1b17",
+                    "surface-variant": "#eae1db",
+                    "on-secondary-fixed-variant": "#484742",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "primary": "#000000",
+                    "on-primary-container": "#858383",
+                    "on-tertiary-container": "#f1414d",
+                    "outline": "#747878",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-tertiary-fixed": "#410007",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#efe7e0",
+                    "tertiary-fixed": "#ffdad8",
+                    "secondary": "#605e59",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#474746",
+                    "inverse-on-surface": "#f8efe9",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#5f5e5e",
+                    "secondary-container": "#e6e2db",
+                    "on-tertiary-fixed-variant": "#92001c",
+                    "primary-container": "#1c1b1b",
+                    "surface-container": "#f5ece6",
+                    "background": "#fff8f4",
+                    "inverse-primary": "#c8c6c5",
+                    "on-secondary-fixed": "#1c1c18",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "inverse-surface": "#34302b",
+                    "outline-variant": "#c4c7c7",
+                    "secondary-fixed-dim": "#c9c6c0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "grid-margin": "4rem",
+                    "grid-gutter": "1.5rem",
+                    "section-gap": "8rem",
+                    "stack-sm": "0.5rem",
+                    "stack-md": "1.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Work Sans"],
+                    "headline-md": ["Newsreader"],
+                    "label-caps": ["Work Sans"],
+                    "headline-lg": ["Newsreader"],
+                    "body-md": ["Work Sans"],
+                    "display-xl": ["Newsreader"]
+            },
+            "fontSize": {
+                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .Newsreader { font-family: 'Newsreader', serif; }
+        .WorkSans { font-family: 'Work Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-[#1A1A1A] docked full-width top-0 border-b-[0.5pt] border-[#1A1A1A] dark:border-stone-700 flat no shadows sticky z-50">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold uppercase tracking-tighter text-[#1A1A1A] dark:text-stone-100">TechPulse</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-stone-500 dark:text-stone-400 font-serif italic text-lg Newsreader transition-colors duration-300" href="#">Archive</a>
+<a class="text-[#1A1A1A] dark:text-white border-b-2 border-orange-500 font-serif italic text-lg Newsreader transition-colors duration-300" href="#">Subscribe</a>
+<a class="text-stone-500 dark:text-stone-400 font-serif italic text-lg Newsreader transition-colors duration-300" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-label-caps font-label-caps text-on-surface-variant mr-4">
+<span class="text-on-tertiary-container">EN</span>
+<span class="text-outline-variant">|</span>
+<span>PT</span>
+</div>
+<button class="scale-100 active:scale-98 transition-transform hover:bg-[#1A1A1A] hover:text-white p-2">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button class="scale-100 active:scale-98 transition-transform hover:bg-[#1A1A1A] hover:text-white p-2">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col">
+<!-- Hero & Form Section -->
+<section class="grid grid-cols-12 gap-grid-gutter px-grid-margin py-section-gap">
+<!-- Metadata Column (Left) -->
+<div class="col-span-12 md:col-span-2 flex flex-col gap-4 border-l border-primary pt-2 mb-8 md:mb-0">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary">Nº 047</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">EDITION 2024</span>
+</div>
+<!-- Content Column -->
+<div class="col-span-12 md:col-span-7 flex flex-col gap-stack-md">
+<h1 class="font-display-xl text-display-xl text-primary max-w-2xl">Subscribe to Morning Report</h1>
+<p class="font-body-lg text-body-lg text-secondary-container text-on-surface-variant max-w-xl">
+                    Join our exclusive circle of readers for a curated deep dive into the intersection of technology, human logic, and the future of artificial intelligence.
+                </p>
+<!-- Subscription Box -->
+<div class="mt-stack-md p-8 border border-primary bg-surface-bright max-w-lg">
+<form class="flex flex-col gap-8">
+<!-- Email Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps uppercase text-primary">Email Address</label>
+<input class="bg-transparent border-t-0 border-l-0 border-r-0 border-b border-primary px-0 py-2 focus:ring-0 focus:border-on-tertiary-container font-body-md text-primary placeholder-outline-variant" placeholder="email@domain.com" type="email"/>
+</div>
+<!-- Language Selection -->
+<div class="flex flex-col gap-4">
+<label class="font-label-caps text-label-caps uppercase text-primary">Preferred Language</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary border-primary focus:ring-offset-0 focus:ring-0" name="lang" type="radio"/>
+<span class="font-body-md text-on-surface group-hover:text-on-tertiary-container transition-colors">English</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 text-primary border-primary focus:ring-offset-0 focus:ring-0" name="lang" type="radio"/>
+<span class="font-body-md text-on-surface group-hover:text-on-tertiary-container transition-colors">Português</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 text-primary border-primary focus:ring-offset-0 focus:ring-0" name="lang" type="radio"/>
+<span class="font-body-md text-on-surface group-hover:text-on-tertiary-container transition-colors">Both (Bilingual Edition)</span>
+</label>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="flex flex-col gap-4">
+<button class="bg-primary text-on-primary py-4 px-8 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-tertiary-container transition-colors duration-300" type="submit">
+                                Subscribe
+                            </button>
+<p class="font-body-md text-sm italic text-secondary text-center">We will send a confirmation email.</p>
+</div>
+</form>
+</div>
+</div>
+<!-- Imagery Column (Right) -->
+<div class="col-span-12 md:col-span-3 flex flex-col gap-8">
+<div class="aspect-[3/4] border border-primary relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-90" data-alt="Monochrome minimalist tech architecture with sharp shadows and clean lines under bright studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzYSHuxlVq6hRgiGV-AzRaVNoOlRuC-Hi6npSlic4Pkhs85tC9VKlKoaDjXcRZluxaVdT3s2COEjceCQbFz5LxMQUIVpb5d-eDg_ibLReWRQhb1N6yUEUkEfYnO8h-XA3zwPFpxocn-Qb3gMo6DSfEOem2n8uOhgIs3sc7ql4kqYJLewRhAIgjwAh0sJ_XiYIxw-jzvS3SXbfdkusUkGoWsbZ022dFhpfBEDh9Y3o9t0YRZLRJ1oDB4Ayk92K-h-ivhRujkSkE3WE"/>
+<div class="absolute inset-0 border-[0.5pt] border-white/20 pointer-events-none"></div>
+</div>
+<div class="border-t border-primary pt-4">
+<p class="font-body-md text-sm text-secondary uppercase tracking-tighter italic">
+                        "Precision is the hallmark of the digital era."
+                    </p>
+</div>
+</div>
+</section>
+<!-- Newsletter Benefits Bento -->
+<section class="px-grid-margin pb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-3 border-t border-primary">
+<div class="p-8 border-b md:border-b-0 md:border-r border-primary flex flex-col gap-4">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md">Daily Intelligence</h3>
+<p class="font-body-md text-on-surface-variant">Synthesized analysis of global technological shifts delivered to your inbox at 06:00 AM.</p>
+</div>
+<div class="p-8 border-b md:border-b-0 md:border-r border-primary flex flex-col gap-4">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="history_edu">history_edu</span>
+<h3 class="font-headline-md text-headline-md">Editorial Rigor</h3>
+<p class="font-body-md text-on-surface-variant">Long-form journalism that respects your time and intelligence. No clickbait, just substance.</p>
+</div>
+<div class="p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="lock">lock</span>
+<h3 class="font-headline-md text-headline-md">Privacy First</h3>
+<p class="font-body-md text-on-surface-variant">Your data remains your own. We do not track, sell, or share subscriber information. Ever.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#1A1A1A] docked full-width border-t-[0.5pt] border-[#1A1A1A] dark:border-stone-700 flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full">
+<div class="flex flex-col gap-2 mb-8 md:mb-0">
+<span class="text-lg font-bold text-[#1A1A1A] dark:text-stone-100 uppercase tracking-tighter">TechPulse</span>
+<p class="font-serif Newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400">© 2024 TechPulse Editorial. All rights reserved.</p>
+</div>
+<nav class="flex gap-8">
+<a class="font-serif Newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400 hover:text-orange-500 transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-serif Newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400 hover:text-orange-500 transition-colors opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-serif Newsreader text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400 hover:text-orange-500 transition-colors opacity-100 hover:opacity-80" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+</body></html>
