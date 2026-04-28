@@ -14,7 +14,6 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
-  const [lang, setLang] = useState<'PT' | 'EN'>('PT')
   const [mobileOpen, setMobileOpen] = useState(false)
   const isHome = pathname === '/'
 
@@ -61,29 +60,6 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 font-label-caps text-[11px] cursor-pointer select-none">
-              <span
-                onClick={() => setLang('PT')}
-                className={
-                  lang === 'PT'
-                    ? 'text-accent-coral'
-                    : 'text-on-surface-variant hover:text-accent-coral transition-colors'
-                }
-              >
-                PT
-              </span>
-              <span className="text-outline">|</span>
-              <span
-                onClick={() => setLang('EN')}
-                className={
-                  lang === 'EN'
-                    ? 'text-accent-coral'
-                    : 'text-on-surface-variant hover:text-accent-coral transition-colors'
-                }
-              >
-                EN
-              </span>
-            </div>
 
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
