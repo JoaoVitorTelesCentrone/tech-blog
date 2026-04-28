@@ -37,7 +37,7 @@ export async function fetchLatestTechNews(): Promise<{ context: string, newUrls:
       const feed = await parser.parseURL(feedUrl);
       
       // Filtrar apenas notícias que não estão no histórico
-      const freshItems = feed.items.filter(item => item.link && !usedUrls.includes(item.link));
+      const freshItems = feed.items.filter((item: CustomItem) => item.link && !usedUrls.includes(item.link));
       
       // Pegar as 3 mais recentes dentre as inéditas
       const recentItems = freshItems.slice(0, 3);
