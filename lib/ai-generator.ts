@@ -2,13 +2,18 @@ import { GoogleGenAI } from '@google/genai';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export async function generateArticleWithGemini(topic: string, context: string): Promise<string> {
+export async function generateArticleWithGemini(topic: string, context: string, recentTitles: string[] = []): Promise<string> {
+  const recentTopicsText = recentTitles.length > 0 
+    ? `\nATENÇÃO: Os assuntos abaixo JÁ foram abordados recentemente no blog. NÃO escolha notícias que tratem do mesmo assunto. Busque uma inovação ou notícia diferente:\n${recentTitles.map(t => `- ${t}`).join('\n')}\n` 
+    : '';
+
   const promptTemplate = `
 Você é um redator profissional de blog sobre tecnologia e inteligência artificial.
 
 Tarefa:
 Você recebeu as informações INÉDITAS da internet sobre o tema abaixo no campo [CONTEXTO]. 
 Escolha a notícia MAIS impactante desse contexto e faça um "deep dive" (mergulho profundo) nela, em vez de fazer um resumo raso de todas. Escreva um post completo em português, pronto para publicação.
+${recentTopicsText}
 
 Tema: "${topic}"
 

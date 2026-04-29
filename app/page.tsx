@@ -14,10 +14,11 @@ export default function HomePage() {
     return `${parseInt(d, 10)} de ${months[parseInt(m, 10) - 1]} de ${y}`;
   }
 
-  // Agrupa artigos por data
+  // Agrupa artigos por data (usando apenas YYYY-MM-DD para agrupar corretamente)
   const grouped = allArticles.reduce((acc, curr) => {
-    if (!acc[curr.date]) acc[curr.date] = [];
-    acc[curr.date].push(curr);
+    const dateKey = curr.date.split('T')[0];
+    if (!acc[dateKey]) acc[dateKey] = [];
+    acc[dateKey].push(curr);
     return acc;
   }, {} as Record<string, typeof allArticles>);
 

@@ -3,6 +3,7 @@ import { generateArticleWithGemini } from '../lib/ai-generator';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { getSortedArticlesData } from '../lib/markdown';
 
 async function main() {
   try {
@@ -16,7 +17,11 @@ async function main() {
 
     console.log('🤖 [GITHUB ACTIONS] Gerando artigo com a IA do Gemini...');
     const topic = "Os principais destaques e inovações em Inteligência Artificial e Tecnologia hoje";
-    let markdownContent = await generateArticleWithGemini(topic, context);
+    
+    const recentArticles = getSortedArticlesData();
+    const recentTitles = recentArticles.slice(0, 10).map(a => a.title);
+    
+    let markdownContent = await generateArticleWithGemini(topic, context, recentTitles);
 
     // Limpar o markdown
     markdownContent = markdownContent.replace(/^```markdown\n/m, '');

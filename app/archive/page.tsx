@@ -8,24 +8,25 @@ export default function ArchivePage() {
 
   // Formatador de mes (ex: 2026-04-28 -> ABRIL 2026)
   const getMonthYear = (dateStr: string) => {
-    const [y, m] = dateStr.split('-');
+    const [y, m] = dateStr.split('T')[0].split('-');
     const months = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
     return `${months[parseInt(m, 10) - 1]} ${y}`;
   }
 
   // Helper para mostrar formato dia/mes (ex: 28.04)
   const getDayMonth = (dateStr: string) => {
-    const [, m, d] = dateStr.split('-');
+    const [, m, d] = dateStr.split('T')[0].split('-');
     return `${d}.${m}`;
   }
 
   // Agrupa artigos primeiro por mês, depois por data
   const archiveGroups = allArticles.reduce((acc, curr) => {
-    const monthYear = getMonthYear(curr.date);
+    const dateKey = curr.date.split('T')[0];
+    const monthYear = getMonthYear(dateKey);
     if (!acc[monthYear]) acc[monthYear] = {};
-    if (!acc[monthYear][curr.date]) acc[monthYear][curr.date] = [];
+    if (!acc[monthYear][dateKey]) acc[monthYear][dateKey] = [];
     
-    acc[monthYear][curr.date].push(curr);
+    acc[monthYear][dateKey].push(curr);
     return acc;
   }, {} as Record<string, Record<string, typeof allArticles>>);
 

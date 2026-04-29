@@ -4,6 +4,7 @@ import { generateArticleWithGemini } from '@/lib/ai-generator';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { getSortedArticlesData } from '@/lib/markdown';
 
 // Impede o cache na rota de API
 export const dynamic = 'force-dynamic';
@@ -28,7 +29,12 @@ export async function GET(request: Request) {
 
     console.log('[CRON] Gerando artigo com Gemini...');
     const topic = "Os principais destaques e inovações em Inteligência Artificial e Tecnologia hoje";
-    let markdownContent = await generateArticleWithGemini(topic, context);
+    
+    // Pegar os títulos recentes para evitar duplicação de assuntos
+    const recentArticles = getSortedArticlesData();
+    const recentTitles = recentArticles.slice(0, 10).map(a => a.title);
+
+    let markdownContent = await generateArticleWithGemini(topic, context, recentTitles);
 
     // Limpar o markdown, caso o LLM coloque dentro de blocos ```markdown
     markdownContent = markdownContent.replace(/^```markdown\n/m, '');
@@ -38,6 +44,9 @@ export async function GET(request: Request) {
     // Fazer parse do markdown para extrair o título
     const matterResult = matter(markdownContent);
     const articleTitle = matterResult.data.title || "Inovação em Tecnologia e IA";
+    
+    // Força a data no padrão ISO requisitado (ex: 2026-04-29T10:54:16.131Z)
+    matterResult.data.date = new Date().toISOString();
 
     console.log('[CRON] Gerando imagem de identidade visual dinamicamente...');
     // Criar um nome único
