@@ -18,22 +18,16 @@ export default function Footer() {
 
         <div className="flex flex-wrap justify-center gap-8 font-newsreader text-sm uppercase tracking-widest">
           <Link
-            href="#"
+            href="/privacy"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
             Política de Privacidade
           </Link>
           <Link
-            href="#"
-            className="text-stone-600 dark:text-stone-400 underline underline-offset-4 decoration-accent-coral"
-          >
-            Termos de Uso
-          </Link>
-          <Link
-            href="#"
+            href="/terms"
             className="text-stone-600 dark:text-stone-400 hover:text-accent-coral transition-colors"
           >
-            Contato
+            Termos de Uso
           </Link>
         </div>
 

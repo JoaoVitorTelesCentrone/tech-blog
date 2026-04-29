@@ -21,7 +21,7 @@ Regras obrigatórias:
    - Título principal cativante e otimizado para SEO.
    - Subtítulo com gancho.
    - Introdução (2-3 parágrafos).
-   - Desenvolvimento dividido em 3-4 seções com subtítulos (<h2>).
+   - Desenvolvimento dividido em 3-4 seções com subtítulos (formato H2).
    - Conclusão com resumo ou perspectiva futura.
    - Seção "Fontes consultadas" com links clicáveis das fontes do [CONTEXTO].
 2. Formate TUDO em Markdown, seguindo RIGOROSAMENTE esta estrutura com frontmatter no topo. 

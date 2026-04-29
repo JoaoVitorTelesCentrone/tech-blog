@@ -25,6 +25,7 @@ async function main() {
     // Extrair o título
     const matterResult = matter(markdownContent);
     const articleTitle = matterResult.data.title || "Inovação em Tecnologia e IA";
+    matterResult.data.date = new Date().toISOString();
 
     console.log('🤖 [GITHUB ACTIONS] Gerando imagem de identidade visual com Pollinations.ai...');
     

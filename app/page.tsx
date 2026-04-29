@@ -58,21 +58,12 @@ export default function HomePage() {
                   </h1>
                 </Link>
                 <div className="border-b border-primary mb-8" style={{ borderBottomWidth: '0.5pt' }} />
-                <div className="flex flex-col md:flex-row gap-8">
-                  <div className="flex-1">
-                    <p className="font-work-sans text-body-lg text-on-surface italic">
-                      Um artigo gerado inteiramente por Inteligência Artificial baseado nas notícias mais recentes da internet.
-                    </p>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {mainArticle.tags?.map(tag => (
-                         <span key={tag} className="font-label-caps text-[10px] uppercase bg-surface-container-low px-2 py-1 rounded">
-                           {tag}
-                         </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="flex flex-wrap gap-2 mt-2 mb-8">
+                  {mainArticle.tags?.map(tag => (
+                     <span key={tag} className="font-label-caps text-[10px] uppercase bg-surface-container-low px-2 py-1 rounded">
+                       {tag}
+                     </span>
+                  ))}
                 </div>
               </div>
 

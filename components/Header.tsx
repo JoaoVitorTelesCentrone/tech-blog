@@ -70,7 +70,7 @@ export default function Header() {
             </button>
 
             <button
-              className="md:hidden material-symbols-outlined text-[#1A1A1A] dark:text-stone-100"
+              className="md:!hidden material-symbols-outlined text-[#1A1A1A] dark:text-stone-100"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
             >
@@ -81,7 +81,7 @@ export default function Header() {
 
         {mobileOpen && (
           <div
-            className="md:hidden bg-white dark:bg-[#1A1A1A] border-t border-[#1A1A1A] dark:border-stone-700 px-8 py-6 flex flex-col gap-4"
+            className="md:!hidden bg-white dark:bg-[#1A1A1A] border-t border-[#1A1A1A] dark:border-stone-700 px-8 py-6 flex flex-col gap-4"
             style={{ borderTopWidth: '0.5pt' }}
           >
             {navLinks.map(({ href, label }) => (

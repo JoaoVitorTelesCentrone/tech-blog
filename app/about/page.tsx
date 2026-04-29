@@ -89,7 +89,7 @@ export default function AboutPage() {
                 <div className="border border-primary p-6 inline-block bg-white dark:bg-[#1A1A1A]" style={{ borderWidth: '0.5pt' }}>
                   <span className="font-newsreader font-semibold text-4xl md:text-[72px] leading-none">TP</span>
                   <div className="font-label-caps text-label-caps text-center mt-2 border-t border-primary pt-2">
-                    EST. 2024
+                    EST. 2026
                   </div>
                 </div>
               </div>
