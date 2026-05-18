@@ -1,4 +1,70 @@
+import type { SlideScript } from './slide-generator';
+
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+
+async function groqChat(messages: { role: string; content: string }[]): Promise<string> {
+  const response = await fetch(GROQ_API_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'llama-3.3-70b-versatile',
+      messages,
+      temperature: 0.7,
+    }),
+  });
+  if (!response.ok) throw new Error(`Groq API error ${response.status}: ${await response.text()}`);
+  const data = await response.json() as { choices: { message: { content: string } }[] };
+  return data.choices[0]?.message?.content || '';
+}
+
+export async function generateSlideScript(markdownContent: string, articleTitle: string): Promise<SlideScript> {
+  const prompt = `Você é um especialista em conteúdo para Instagram.
+
+Com base no artigo abaixo, crie um roteiro para um carrossel de Instagram com EXATAMENTE esta estrutura JSON.
+Responda APENAS com o JSON, sem texto adicional, sem crases.
+
+Regras:
+- "title" do cover: máximo 50 caracteres, impactante
+- "subtitle" do cover: máximo 80 caracteres, gancho curto
+- Entre 3 e 4 slides de conteúdo
+- Cada slide: "headline" curto (máximo 40 chars) + 3 bullets curtos (máximo 70 chars cada)
+- Linguagem direta, informativa, sem floreio
+
+Formato esperado:
+{
+  "cover": {
+    "title": "Título curto e impactante",
+    "subtitle": "Subtítulo com gancho"
+  },
+  "slides": [
+    { "headline": "O que aconteceu?", "bullets": ["Bullet 1", "Bullet 2", "Bullet 3"] },
+    { "headline": "Por que importa?", "bullets": ["Bullet 1", "Bullet 2", "Bullet 3"] },
+    { "headline": "O que vem por aí?", "bullets": ["Bullet 1", "Bullet 2", "Bullet 3"] }
+  ]
+}
+
+Artigo:
+${markdownContent.substring(0, 3000)}
+`;
+
+  const raw = await groqChat([{ role: 'user', content: prompt }]);
+
+  // Remove possíveis blocos de código caso o modelo adicione
+  const clean = raw.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+
+  try {
+    return JSON.parse(clean) as SlideScript;
+  } catch {
+    // Fallback mínimo se o JSON vier malformado
+    return {
+      cover: { title: articleTitle.substring(0, 50), subtitle: 'Tudo o que você precisa saber' },
+      slides: [{ headline: 'Pontos principais', bullets: ['Confira o artigo completo no link'] }],
+    };
+  }
+}
 
 export async function generateArticleWithGroq(topic: string, context: string): Promise<string> {
   const promptTemplate = `
@@ -62,26 +128,7 @@ tags: ["tag1", "tag2", "tag3"]
 `;
 
   try {
-    const response = await fetch(GROQ_API_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [{ role: 'user', content: promptTemplate }],
-        temperature: 0.7,
-      }),
-    });
-
-    if (!response.ok) {
-      const err = await response.text();
-      throw new Error(`Groq API error ${response.status}: ${err}`);
-    }
-
-    const data = await response.json() as { choices: { message: { content: string } }[] };
-    let text = data.choices[0]?.message?.content || '';
+    let text = await groqChat([{ role: 'user', content: promptTemplate }]);
 
     // Filtro de segurança rigoroso: remove crases de blocos markdown caso a IA decida enviá-los mesmo com o aviso
     text = text.replace(/^```markdown\s*/i, '');
