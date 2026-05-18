@@ -35,7 +35,7 @@ jobs:
 
       - name: Generate AI Article
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         # Rodamos diretamente com tsx já que não teremos o arquivo .env no github
         run: npx tsx scripts/generate-article.ts
 

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { fetchLatestTechNews } from '@/lib/news-fetcher';
-import { generateArticleWithGemini } from '@/lib/ai-generator';
+import { generateArticleWithGroq } from '@/lib/ai-generator';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -26,9 +26,9 @@ export async function GET(request: Request) {
       return NextResponse.json({ success: true, message: 'Nenhuma notícia nova, ignorando.' });
     }
 
-    console.log('[CRON] Gerando artigo com Gemini...');
+    console.log('[CRON] Gerando artigo com Groq...');
     const topic = "Os principais destaques e inovações em Inteligência Artificial e Tecnologia hoje";
-    let markdownContent = await generateArticleWithGemini(topic, context);
+    let markdownContent = await generateArticleWithGroq(topic, context);
 
     // Limpar o markdown, caso o LLM coloque dentro de blocos ```markdown
     markdownContent = markdownContent.replace(/^```markdown\n/m, '');

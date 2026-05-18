@@ -1,5 +1,5 @@
 import { fetchLatestTechNews } from '../lib/news-fetcher';
-import { generateArticleWithGemini } from '../lib/ai-generator';
+import { generateArticleWithGroq } from '../lib/ai-generator';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -14,9 +14,9 @@ async function main() {
       process.exit(0);
     }
 
-    console.log('🤖 [GITHUB ACTIONS] Gerando artigo com a IA do Gemini...');
+    console.log('🤖 [GITHUB ACTIONS] Gerando artigo com a IA do Groq...');
     const topic = "Os principais destaques e inovações em Inteligência Artificial e Tecnologia hoje";
-    let markdownContent = await generateArticleWithGemini(topic, context);
+    let markdownContent = await generateArticleWithGroq(topic, context);
 
     // Limpar o markdown
     markdownContent = markdownContent.replace(/^```markdown\n/m, '');

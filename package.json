@@ -10,7 +10,6 @@
     "generate": "npx tsx --env-file=.env scripts/generate-article.ts"
   },
   "dependencies": {
-    "@google/genai": "^1.50.1",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "next": "^14.2.29",
