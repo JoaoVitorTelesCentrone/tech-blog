@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
           <div
             className="prose prose-lg max-w-none
                        prose-headings:font-syne prose-headings:font-bold prose-headings:tracking-tight
-                       prose-p:font-cormorant prose-p:font-light prose-p:text-[1.15rem] prose-p:leading-[1.85]
+                       prose-p:font-cormorant prose-p:font-normal prose-p:text-[1.2rem] prose-p:leading-[1.9]
                        prose-a:text-ink prose-a:underline hover:prose-a:no-underline
                        prose-strong:font-cormorant prose-strong:font-semibold
                        prose-blockquote:font-cormorant prose-blockquote:italic prose-blockquote:border-l-2 prose-blockquote:border-warm-gray prose-blockquote:text-muted
