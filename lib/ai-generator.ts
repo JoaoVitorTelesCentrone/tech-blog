@@ -1,9 +1,15 @@
 import OpenAI from 'openai';
 
-const client = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY || process.env.deepseek_api_key,
-  baseURL: 'https://api.deepseek.com/v1',
-});
+let _client: OpenAI | null = null;
+function getClient(): OpenAI {
+  if (!_client) {
+    _client = new OpenAI({
+      apiKey: process.env.DEEPSEEK_API_KEY || process.env.deepseek_api_key,
+      baseURL: 'https://api.deepseek.com/v1',
+    });
+  }
+  return _client;
+}
 
 const MODEL = 'deepseek-chat';
 
@@ -77,7 +83,7 @@ tags: ["tag1", "tag2", "tag3"]
 7. Não invente dados. Baseie-se no [CONTEXTO] fornecido.`;
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await getClient().chat.completions.create({
       model: MODEL,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.7,
@@ -117,7 +123,7 @@ Retorne EXATAMENTE este JSON (sem texto adicional, sem markdown):
 }`;
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await getClient().chat.completions.create({
       model: MODEL,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.2,
@@ -186,7 +192,7 @@ Retorne EXATAMENTE este JSON com 6 a 8 slides (sem texto adicional, sem markdown
 }`;
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await getClient().chat.completions.create({
       model: MODEL,
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.3,
@@ -256,7 +262,7 @@ Os 4 carrosséis devem ter ângulos distintos: educacional, impacto pessoal, dad
 Use os tipos de slide conforme a identidade visual descrita no sistema. Alterne fundos: ímpares = ink, pares = paper.`;
 
   try {
-    const response = await client.chat.completions.create({
+    const response = await getClient().chat.completions.create({
       model: MODEL,
       messages: [
         { role: 'system', content: CAROUSEL_SYSTEM_PROMPT },
