@@ -62,21 +62,21 @@ export default function SlidesIndexPage() {
               <Link
                 key={deck.slug}
                 href={`/slides/${deck.slug}`}
-                className="flex items-baseline justify-between py-6 group"
+                className="flex flex-col sm:flex-row sm:items-baseline justify-between py-5 gap-2 sm:gap-0 group min-h-[56px]"
               >
-                <div className="flex items-baseline gap-6 min-w-0">
-                  <span className="font-dm-mono text-[0.6rem] tracking-[0.1em] text-muted flex-shrink-0 w-6 text-right">
+                <div className="flex items-baseline gap-4 sm:gap-6 min-w-0">
+                  <span className="font-dm-mono text-[0.6rem] tracking-[0.1em] text-muted flex-shrink-0 w-5 text-right">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h2 className="font-cormorant font-light text-ink text-2xl leading-tight group-hover:text-muted transition-colors truncate">
+                  <h2 className="font-cormorant font-normal text-ink text-xl sm:text-2xl leading-tight group-hover:text-muted transition-colors">
                     {deck.title}
                   </h2>
                 </div>
-                <div className="flex items-center gap-8 flex-shrink-0 ml-8">
+                <div className="flex items-center gap-4 sm:gap-8 flex-shrink-0 sm:ml-8 pl-9 sm:pl-0">
                   <span className="font-dm-mono text-[0.6rem] tracking-[0.1em] uppercase text-muted hidden md:block">
                     {deck.slideCount} slides
                   </span>
-                  <span className="font-dm-mono text-[0.6rem] tracking-[0.1em] text-muted hidden md:block">
+                  <span className="font-dm-mono text-[0.6rem] tracking-[0.1em] text-muted hidden sm:block">
                     {deck.date}
                   </span>
                   <span className="font-dm-mono text-[0.65rem] tracking-[0.1em] uppercase text-ink group-hover:text-muted transition-colors">

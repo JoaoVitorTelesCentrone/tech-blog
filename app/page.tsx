@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-12">
+      <main className="max-w-editorial mx-auto px-4 sm:px-6 md:px-grid-margin py-8 md:py-12">
         {allArticles.length === 0 ? (
           <div className="py-20 text-center">
             <h1 className="font-syne font-bold text-4xl text-ink mb-4">Ainda não há artigos</h1>
@@ -39,7 +39,7 @@ export default function HomePage() {
         ) : (
           <>
             {/* ── Hero — ink background ── */}
-            <header className="bg-ink -mx-6 md:-mx-grid-margin mb-section-gap px-6 md:px-grid-margin py-16 md:py-24 relative overflow-hidden">
+            <header className="bg-ink -mx-4 sm:-mx-6 md:-mx-grid-margin mb-section-gap px-4 sm:px-6 md:px-grid-margin py-12 md:py-24 relative overflow-hidden">
               {/* Decorative circle */}
               <div
                 className="absolute top-0 right-0 w-80 h-80 rounded-full border border-white/[0.08] pointer-events-none"
@@ -54,7 +54,7 @@ export default function HomePage() {
 
               {/* Headline */}
               <Link href={`/post/${mainArticle.slug}`} className="block max-w-3xl">
-                <h1 className="font-syne font-extrabold text-white leading-[0.9] tracking-[-0.04em] text-4xl sm:text-5xl lg:text-display-xl mb-8 hover:text-electric transition-colors duration-200">
+                <h1 className="font-syne font-extrabold text-white leading-[0.95] tracking-[-0.03em] text-2xl sm:text-4xl lg:text-display-xl mb-6 md:mb-8 hover:text-electric transition-colors duration-200">
                   {mainArticle.title}
                 </h1>
               </Link>
@@ -76,7 +76,7 @@ export default function HomePage() {
               <div className="flex gap-6 items-center flex-wrap">
                 <Link
                   href={`/post/${mainArticle.slug}`}
-                  className="inline-block bg-cream text-ink font-syne font-semibold text-[0.78rem] tracking-[0.12em] uppercase px-8 py-[0.9rem] hover:bg-electric transition-colors duration-200"
+                  className="inline-block bg-cream text-ink font-syne font-semibold text-[0.78rem] tracking-[0.12em] uppercase px-6 sm:px-8 py-4 min-h-[44px] hover:bg-electric transition-colors duration-200"
                 >
                   Ler Artigo
                 </Link>
@@ -129,7 +129,7 @@ export default function HomePage() {
             {previousDates.length > 0 && (
               <section className="grid grid-cols-12 gap-grid-gutter mb-section-gap">
                 {/* Left — previous editions */}
-                <div className="col-span-12 border border-ink p-8 md:p-12">
+                <div className="col-span-12 border border-ink p-5 sm:p-8 md:p-12">
                   <p className="font-dm-mono text-[0.65rem] tracking-[0.15em] uppercase text-muted mb-8">
                     Publicações Anteriores
                   </p>

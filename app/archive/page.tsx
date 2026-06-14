@@ -29,15 +29,15 @@ export default function ArchivePage() {
   return (
     <>
       <Header />
-      <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-16 min-h-screen">
+      <main className="max-w-editorial mx-auto px-4 sm:px-6 md:px-grid-margin py-10 md:py-16 min-h-screen">
 
         {/* Page header */}
-        <header className="mb-24">
-          <p className="font-dm-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted flex items-center gap-3 mb-8">
+        <header className="mb-12 md:mb-24">
+          <p className="font-dm-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted flex items-center gap-3 mb-6 md:mb-8">
             <span className="inline-block w-5 h-px bg-muted flex-shrink-0" />
             Registros Históricos
           </p>
-          <h1 className="font-syne font-extrabold text-ink leading-[0.9] tracking-[-0.04em] text-5xl md:text-display-xl mb-6">
+          <h1 className="font-syne font-extrabold text-ink leading-[0.95] tracking-[-0.03em] text-3xl sm:text-5xl md:text-display-xl mb-4 md:mb-6">
             Arquivo de Edições
           </h1>
           <p className="font-cormorant font-light italic text-muted text-2xl max-w-xl leading-relaxed">
@@ -68,7 +68,7 @@ export default function ArchivePage() {
                           href={`/post/${article.slug}`}
                           className="py-4 block group"
                         >
-                          <h3 className="font-cormorant font-light text-ink text-2xl md:text-3xl leading-tight group-hover:text-muted transition-colors duration-200 group-hover:translate-x-1 transition-transform">
+                          <h3 className="font-cormorant font-normal text-ink text-xl md:text-3xl leading-tight group-hover:text-muted transition-colors duration-200">
                             {article.title}
                           </h3>
                         </Link>
@@ -82,8 +82,8 @@ export default function ArchivePage() {
         </section>
 
         {/* Load more placeholder */}
-        <section className="mt-24 pb-24 text-center">
-          <button className="font-dm-mono text-[0.65rem] tracking-[0.15em] uppercase border border-ink px-12 py-4 text-ink hover:bg-ink hover:text-white transition-colors duration-200">
+        <section className="mt-12 md:mt-24 pb-12 md:pb-24 text-center">
+          <button className="font-dm-mono text-[0.65rem] tracking-[0.15em] uppercase border border-ink px-8 sm:px-12 py-4 min-h-[44px] text-ink hover:bg-ink hover:text-white transition-colors duration-200">
             Carregar Edições Anteriores
           </button>
         </section>

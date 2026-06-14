@@ -1,53 +1,85 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Brand palette */
     --ink:       #0D0D0B;
     --cream:     #F4F0E8;
     --paper:     #EDE8DC;
     --warm-gray: #C8C3B8;
-    --muted:     #7A7670;
+    --muted-color: #7A7670;
     --electric:  #C9FF47;
+
+    /* shadcn tokens mapped to brand */
+    --background:             var(--cream);
+    --foreground:             var(--ink);
+    --card:                   var(--paper);
+    --card-foreground:        var(--ink);
+    --popover:                var(--cream);
+    --popover-foreground:     var(--ink);
+    --primary:                var(--ink);
+    --primary-foreground:     var(--cream);
+    --secondary:              var(--paper);
+    --secondary-foreground:   var(--ink);
+    --muted:                  var(--paper);
+    --muted-foreground:       #7A7670;
+    --accent:                 var(--electric);
+    --accent-foreground:      var(--ink);
+    --destructive:            oklch(0.577 0.245 27.325);
+    --border:                 var(--warm-gray);
+    --input:                  var(--warm-gray);
+    --ring:                   var(--ink);
+    --radius:                 0px;
   }
 
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: #F4F0E8;
+    color: #0D0D0B;
+  }
 }
 
 @layer components {
-  /* Horizontal rule — 1px warm-gray */
   .fine-rule {
     height: 1px;
     background-color: var(--warm-gray);
     width: 100%;
   }
 
-  /* Button styles */
   .btn-primary {
-    @apply inline-block bg-ink text-white font-syne font-semibold text-[0.78rem] tracking-[0.12em] uppercase px-8 py-[0.9rem] border-none cursor-pointer transition-colors duration-200;
+    @apply inline-block bg-ink text-white font-syne font-semibold text-[0.78rem] tracking-[0.12em] uppercase px-8 py-4 min-h-[44px] border-none cursor-pointer transition-colors duration-200;
   }
   .btn-primary:hover {
-    @apply bg-electric text-ink;
+    background-color: #C9FF47;
+    color: #0D0D0B;
   }
 
   .btn-ghost {
-    @apply bg-transparent text-muted font-dm-mono text-[0.72rem] tracking-[0.1em] uppercase border-none cursor-pointer py-[0.6rem] inline-flex items-center gap-2 transition-colors duration-200;
+    @apply bg-transparent font-dm-mono text-[0.72rem] tracking-[0.1em] uppercase border-none cursor-pointer py-3 min-h-[44px] inline-flex items-center gap-2 transition-colors duration-200;
+    color: #7A7670;
   }
   .btn-ghost:hover {
-    @apply text-ink;
+    color: #0D0D0B;
   }
 
-  /* Tag / badge */
   .tag-brand {
     @apply inline-block font-dm-mono text-[0.6rem] tracking-[0.15em] uppercase px-3 py-1 border border-current;
   }
 
-  /* Metadata label (DM Mono, small caps) */
   .meta-label {
-    @apply font-dm-mono text-[0.65rem] tracking-[0.15em] uppercase text-muted;
+    @apply font-dm-mono text-[0.65rem] tracking-[0.15em] uppercase;
+    color: #7A7670;
   }
 }

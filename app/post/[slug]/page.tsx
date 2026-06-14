@@ -17,7 +17,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
   return (
     <>
       <Header />
-      <main className="max-w-editorial mx-auto px-6 md:px-grid-margin py-12">
+      <main className="max-w-editorial mx-auto px-4 sm:px-6 md:px-grid-margin py-8 md:py-12">
         <article className="max-w-3xl mx-auto">
 
           <Link
@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
               </div>
             )}
 
-            <h1 className="font-syne font-extrabold text-ink mb-6 leading-[0.95] tracking-[-0.03em] text-4xl md:text-5xl">
+            <h1 className="font-syne font-extrabold text-ink mb-6 leading-[1.0] tracking-[-0.02em] text-2xl sm:text-3xl md:text-5xl">
               {article.title}
             </h1>
 
@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
           <div
             className="prose prose-lg max-w-none
                        prose-headings:font-syne prose-headings:font-bold prose-headings:tracking-tight
-                       prose-p:font-cormorant prose-p:font-normal prose-p:text-[1.2rem] prose-p:leading-[1.9]
+                       prose-p:font-cormorant prose-p:font-normal prose-p:text-[1.1rem] sm:prose-p:text-[1.2rem] prose-p:leading-[1.85]
                        prose-a:text-ink prose-a:underline hover:prose-a:no-underline
                        prose-strong:font-cormorant prose-strong:font-semibold
                        prose-blockquote:font-cormorant prose-blockquote:italic prose-blockquote:border-l-2 prose-blockquote:border-warm-gray prose-blockquote:text-muted

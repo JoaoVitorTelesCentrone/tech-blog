@@ -16,13 +16,13 @@ export default function Header() {
 
   return (
     <nav className="sticky top-0 z-50 bg-cream border-b border-warm-gray">
-      <div className="flex justify-between items-center px-6 md:px-grid-margin py-4 w-full max-w-editorial mx-auto">
+      <div className="flex justify-between items-center px-4 sm:px-6 md:px-grid-margin py-3 md:py-4 w-full max-w-editorial mx-auto">
 
         {/* Logo */}
         <Link href="/" className="flex items-baseline leading-none">
-          <span className="font-syne font-extrabold text-ink text-[1.4rem] tracking-[-0.04em]">Tech</span>
-          <span className="font-cormorant italic font-light text-ink text-[1.5rem] px-[0.15em]">&</span>
-          <span className="font-syne font-extrabold text-ink text-[1.4rem] tracking-[-0.04em]">Future</span>
+          <span className="font-syne font-extrabold text-ink text-[1.2rem] sm:text-[1.4rem] tracking-[-0.04em]">Tech</span>
+          <span className="font-cormorant italic font-light text-ink text-[1.3rem] sm:text-[1.5rem] px-[0.15em]">&</span>
+          <span className="font-syne font-extrabold text-ink text-[1.2rem] sm:text-[1.4rem] tracking-[-0.04em]">Future</span>
         </Link>
 
         {/* Desktop nav */}
@@ -44,25 +44,25 @@ export default function Header() {
           })}
         </ul>
 
-        {/* Mobile toggle */}
+        {/* Mobile toggle — large touch target */}
         <button
-          className="md:hidden font-dm-mono text-[0.65rem] tracking-[0.1em] uppercase text-muted hover:text-ink transition-colors"
+          className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center font-dm-mono text-[0.7rem] tracking-[0.1em] uppercase text-muted hover:text-ink transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
         >
-          {mobileOpen ? '✕' : '≡ Menu'}
+          {mobileOpen ? '✕' : 'Menu'}
         </button>
       </div>
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="md:hidden bg-cream border-t border-warm-gray px-6 py-6 flex flex-col gap-5">
+        <div className="md:hidden bg-cream border-t border-warm-gray px-4 sm:px-6 py-4 flex flex-col">
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               onClick={() => setMobileOpen(false)}
-              className={`font-dm-mono text-[0.65rem] tracking-[0.12em] uppercase transition-colors ${
+              className={`font-dm-mono text-[0.75rem] tracking-[0.12em] uppercase transition-colors min-h-[48px] flex items-center border-b border-warm-gray last:border-0 ${
                 pathname === href ? 'text-ink' : 'text-muted'
               }`}
             >
